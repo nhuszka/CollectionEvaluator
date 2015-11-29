@@ -2,9 +2,6 @@ package com.nhuszka.collection_evaluator.setting;
 
 public class ArgumentParser {
 
-	private static final EvaluatedCollectionInterface FALLBACK_INTERFACE_PARAM = EvaluatedCollectionInterface.MAP;
-	private static Integer FALLBACK_NUM_OF_ELEMENTS_PARAM = 10;
-
 	private StringBuilder errorMsg = new StringBuilder();
 
 	public void createSettingsFromArguments(String[] arguments) {
@@ -35,9 +32,9 @@ public class ArgumentParser {
 		errorMsg.append("\n")
 				.append("Incorrect first parameter, 'collection interface to evaluate'. ")
 				.append("Fall back to default: ")
-				.append(FALLBACK_INTERFACE_PARAM)
+				.append(EvaluatorSettings.DEFAULT_INTERFACE_SETTING)
 				.append("\n");
-		return FALLBACK_INTERFACE_PARAM;
+		return EvaluatorSettings.DEFAULT_INTERFACE_SETTING;
 	}
 
 	private void addUsageMsg() {
@@ -71,9 +68,9 @@ public class ArgumentParser {
 		errorMsg.append("\n")
 				.append("Incorrect second parameter, 'number of elements per collection'. ")
 				.append("Fall back to default: ")
-				.append(FALLBACK_NUM_OF_ELEMENTS_PARAM)
+				.append(EvaluatorSettings.DEFAULT_NUM_OF_ELEMENTS_SETTING)
 				.append("\n");
-		return FALLBACK_NUM_OF_ELEMENTS_PARAM;
+		return EvaluatorSettings.DEFAULT_NUM_OF_ELEMENTS_SETTING;
 	}
 
 	private void printErrorMessageOnDemand() {
