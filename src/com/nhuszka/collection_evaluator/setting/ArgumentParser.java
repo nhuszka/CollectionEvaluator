@@ -14,14 +14,16 @@ public class ArgumentParser {
 	}
 
 	private EvaluatedCollectionInterface parseEvaluatedInterfaceParam(String[] arguments) {
-		String argument1 = arguments[0];
-		switch (argument1.toLowerCase()) {
-			case "map" :
-				return EvaluatedCollectionInterface.MAP;
-			case "queue" :
-				return EvaluatedCollectionInterface.QUEUE;
-			default :
-				break;
+		if (arguments.length > 0) {
+			String argument1 = arguments[0];
+			switch (argument1.toLowerCase()) {
+				case "map" :
+					return EvaluatedCollectionInterface.MAP;
+				case "queue" :
+					return EvaluatedCollectionInterface.QUEUE;
+				default :
+					break;
+			}
 		}
 		return fallbackToDefaultInterfaceParam();
 	}
