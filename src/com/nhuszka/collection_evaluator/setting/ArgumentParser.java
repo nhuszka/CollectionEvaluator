@@ -5,8 +5,8 @@ public class ArgumentParser {
 	private StringBuilder errorMsg = new StringBuilder();
 
 	public void createSettingsFromArguments(String[] arguments) {
-		EvaluatedCollectionInterface evaluatedInterface = parseEvaluatedInterfaceParam(arguments);
-		Integer numberOfElementsPerInterface = parseNumOfElementsPerCollectionArgument(arguments);
+		final EvaluatedCollectionInterface evaluatedInterface = parseEvaluatedInterfaceParam(arguments);
+		final Integer numberOfElementsPerInterface = parseNumOfElementsPerCollectionArgument(arguments);
 
 		EvaluatorSettings.createSettings(evaluatedInterface, numberOfElementsPerInterface);
 
@@ -29,7 +29,6 @@ public class ArgumentParser {
 	}
 
 	private EvaluatedCollectionInterface fallbackToDefaultInterfaceParam() {
-		// TODO other exception handling
 		addUsageMsg();
 		errorMsg.append("\n")
 				.append("Incorrect first parameter, 'collection interface to evaluate'. ")
@@ -51,9 +50,10 @@ public class ArgumentParser {
 	private Integer parseNumOfElementsPerCollectionArgument(String[] arguments) {
 		try {
 			if (arguments.length > 1) {
-				Integer numOfElementsParam = Integer.parseInt(arguments[1]);
+				final String secondArgument = arguments[1];
+				Integer numOfElementsParam = Integer.parseInt(secondArgument);
 				if (numOfElementsParam > 0) {
-					return Integer.parseInt(arguments[1]);
+					return numOfElementsParam;
 				}
 			}
 			return fallbackToDefaultNumOfElementsParam();
@@ -63,7 +63,6 @@ public class ArgumentParser {
 	}
 
 	private Integer fallbackToDefaultNumOfElementsParam() {
-		// TODO other exception handling
 		if (errorMsg.toString().isEmpty()) {
 			addUsageMsg();
 		}

@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator;
 
+import com.nhuszka.collection_evaluator.evaluator.CollectionEvaluator;
 import com.nhuszka.collection_evaluator.setting.ArgumentParser;
 
 public class CollectionEvaluatorStarter {

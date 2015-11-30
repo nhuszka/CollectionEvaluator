@@ -1,4 +1,4 @@
-package com.nhuszka.collection_evaluator;
+package com.nhuszka.collection_evaluator.evaluator;
 
 import java.util.Map;
 import java.util.Queue;
@@ -17,27 +17,29 @@ public class CollectionEvaluator {
 
 		switch (settings.getEvaluatedInterface()) {
 			case MAP :
-				evaluateMap(numberOfElements);
+				runPerformanceEvaluationOnMap(numberOfElements);
 				break;
 			case QUEUE :
-				evaluateQueue(numberOfElements);
+				runPerformanceEvaluationOnQueue(numberOfElements);
 				break;
 			default :
 				break;
 		}
 	}
 
-	private void evaluateMap(Integer numberOfElements) {
+	private void runPerformanceEvaluationOnMap(Integer numberOfElements) {
 		MapGenerator mapGenerator = new MapGenerator();
 		Map<DummyObject, DummyObject> map = mapGenerator.generate(numberOfElements);
 
-		System.out.println(map);
+		// TODO display results
+		new MapEvaluator().evaluate(map); 
 	}
 
-	private void evaluateQueue(Integer numberOfElements) {
+	private void runPerformanceEvaluationOnQueue(Integer numberOfElements) {
 		CollectionGenerator queueGenerator = new QueueGenerator();
 		Queue<DummyObject> queue = (Queue<DummyObject>) queueGenerator.generate(numberOfElements);
 
-		System.out.println(queue);
+		// TODO display results
+		new QueueEvaluator().evaluate(queue);
 	}
 }
