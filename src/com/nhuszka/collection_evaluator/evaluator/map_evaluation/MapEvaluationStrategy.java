@@ -12,9 +12,20 @@ public abstract class MapEvaluationStrategy {
 
 	final static Integer NUM_OF_ITERATION = 10000000;
 
-	public abstract MapEvaluationResult evaluate(MapEvaluationResult result);
+	protected abstract String getDescription();
 
-	protected List<DummyObject> computeRandomKeys(Map<DummyObject, DummyObject> map) {
+	protected abstract Long computeElapsedNanoSec(Map<DummyObject, DummyObject> map, List<DummyObject> randomKeys);
+
+	public final MapEvaluationResult evaluate(MapEvaluationResult result) {
+		Map<DummyObject, DummyObject> map = result.getMap();
+		List<DummyObject> randomKeys = computeRandomKeys(map);
+
+		Long elapsedNanoSec = computeElapsedNanoSec(map, randomKeys);
+		result.addEvaluationResult(getDescription(), elapsedNanoSec);
+		return result;
+	}
+
+	private final List<DummyObject> computeRandomKeys(Map<DummyObject, DummyObject> map) {
 		List<DummyObject> keys = new ArrayList<>(map.keySet());
 		Integer numOfKeys = keys.size();
 
@@ -26,4 +37,5 @@ public abstract class MapEvaluationStrategy {
 
 		return randomKeys;
 	}
+
 }

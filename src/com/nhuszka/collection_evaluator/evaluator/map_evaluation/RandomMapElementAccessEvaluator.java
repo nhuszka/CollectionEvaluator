@@ -3,30 +3,24 @@ package com.nhuszka.collection_evaluator.evaluator.map_evaluation;
 import java.util.List;
 import java.util.Map;
 
-import com.nhuszka.collection_evaluator.display.MapEvaluationResult;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
 public class RandomMapElementAccessEvaluator extends MapEvaluationStrategy {
 
 	@Override
-	public MapEvaluationResult evaluate(MapEvaluationResult result) {
-		Long estimatedTime = computeEstimatedTime(result.getMap());
-		System.out.println(estimatedTime);
-		return result;
+	protected String getDescription() {
+		return "Random map element access";
 	}
 
-	private Long computeEstimatedTime(Map<DummyObject, DummyObject> map) {
-		List<DummyObject> randomKeys = computeRandomKeys(map);
+	@Override
+	protected Long computeElapsedNanoSec(Map<DummyObject, DummyObject> map, List<DummyObject> randomKeys) {
+		Long startTime = System.nanoTime();
 
-		for (int i = 0; i < 10; ++i) {
-			Long startTime = System.nanoTime();
-			for (DummyObject key : randomKeys) {
-				map.get(key);
-			}
-			Long estimatedTime = System.nanoTime() - startTime;
-			System.out.println(estimatedTime);
+		for (DummyObject key : randomKeys) {
+			map.get(key);
 		}
 
-		return 0l;
+		Long elapsedNanoSec = System.nanoTime() - startTime;
+		return elapsedNanoSec;
 	}
 }

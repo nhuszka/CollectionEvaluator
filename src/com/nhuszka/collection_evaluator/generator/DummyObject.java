@@ -15,5 +15,4 @@ public class DummyObject {
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		return result;
 	}
-
 }
