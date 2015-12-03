@@ -2,7 +2,7 @@ package com.nhuszka.collection_evaluator.setting;
 
 public class EvaluatorSettings {
 	public static final EvaluatedCollectionInterface DEFAULT_INTERFACE_SETTING = EvaluatedCollectionInterface.MAP;
-	public static Integer DEFAULT_NUM_OF_ELEMENTS_SETTING = 10;
+	public static Integer DEFAULT_NUM_OF_ELEMENTS_SETTING = 100;
 
 	private EvaluatedCollectionInterface evaluatedInterface;
 	private Integer numberOfElementsPerInterface;
