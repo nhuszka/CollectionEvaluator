@@ -1,10 +1,11 @@
-package com.nhuszka.collection_evaluator.display;
+package com.nhuszka.collection_evaluator.result;
 
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class QueueEvaluationResult implements CollectionEvaluationResult {
+public class QueueEvaluationResult extends CollectionEvaluationResult {
+	
 	public Queue<DummyObject> queue;
 	
 	public QueueEvaluationResult(Queue<DummyObject> queue) {

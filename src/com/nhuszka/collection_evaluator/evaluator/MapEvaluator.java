@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.nhuszka.collection_evaluator.display.CollectionEvaluationResult;
-import com.nhuszka.collection_evaluator.display.MapEvaluationResult;
 import com.nhuszka.collection_evaluator.evaluator.map_evaluation.MapEvaluationStrategy;
 import com.nhuszka.collection_evaluator.evaluator.map_evaluation.RandomMapElementAccessEvaluator;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
+import com.nhuszka.collection_evaluator.result.MapEvaluationResult;
 
 class MapEvaluator {
 	private static final List<MapEvaluationStrategy> evaluationStrategies;

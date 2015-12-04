@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.nhuszka.collection_evaluator.display.MapEvaluationResult;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.result.MapEvaluationResult;
 
-public abstract class MapEvaluationStrategy {
-
-	final static Integer NUM_OF_ITERATION = 10000000;
+public abstract class MapEvaluationStrategy implements EvaluationStrategy {
 
 	protected abstract String getDescription();
 
@@ -30,7 +28,7 @@ public abstract class MapEvaluationStrategy {
 		Integer numOfKeys = keys.size();
 
 		List<DummyObject> randomKeys = new ArrayList<>();
-		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
+		for (int i = 0; i < NUM_OF_RANDOM_ELEMENT_ACCESS; ++i) {
 			Integer random = new Random().nextInt(numOfKeys);
 			randomKeys.add(keys.get(random));
 		}

@@ -1,9 +1,10 @@
 package com.nhuszka.collection_evaluator.evaluator;
 
 import java.util.Queue;
-import com.nhuszka.collection_evaluator.display.CollectionEvaluationResult;
-import com.nhuszka.collection_evaluator.display.QueueEvaluationResult;
+
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
+import com.nhuszka.collection_evaluator.result.QueueEvaluationResult;
 
 class QueueEvaluator {
 	

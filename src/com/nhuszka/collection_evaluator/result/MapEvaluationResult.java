@@ -1,26 +1,20 @@
-package com.nhuszka.collection_evaluator.display;
+package com.nhuszka.collection_evaluator.result;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class MapEvaluationResult implements CollectionEvaluationResult {
+public class MapEvaluationResult extends CollectionEvaluationResult {
+	
 	public Map<DummyObject, DummyObject> map;
-	public Map<String, Long> evaluationResults;
 
 	public MapEvaluationResult(Map<DummyObject, DummyObject> map) {
 		this.map = Collections.unmodifiableMap(map);
-		this.evaluationResults = new HashMap<>();
 	}
 
 	public Map<DummyObject, DummyObject> getMap() {
 		return map;
-	}
-
-	public void addEvaluationResult(String evaluationDescription, Long elapsedNanoSec) {
-		evaluationResults.put(evaluationDescription, elapsedNanoSec);
 	}
 
 	@Override

@@ -3,11 +3,11 @@ package com.nhuszka.collection_evaluator.evaluator;
 import java.util.Map;
 import java.util.Queue;
 
-import com.nhuszka.collection_evaluator.display.CollectionEvaluationResult;
 import com.nhuszka.collection_evaluator.generator.CollectionGenerator;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.generator.MapGenerator;
 import com.nhuszka.collection_evaluator.generator.QueueGenerator;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 import com.nhuszka.collection_evaluator.setting.EvaluatorSettings;
 
 public class CollectionEvaluator {
