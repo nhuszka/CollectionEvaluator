@@ -5,26 +5,29 @@ import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationUtil;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.result.CollectionEvaluation;
-import com.nhuszka.collection_evaluator.result.QueueEvaluation;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 
 public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 
-	protected abstract Long computeElapsedNanoSec(Queue<DummyObject> queue, List<DummyObject> randomKeys);
+	protected final Queue<DummyObject> queue;
 
-	public final CollectionEvaluation evaluate(CollectionEvaluation result) {
-		// TODO avoid casting
-		Queue<DummyObject> queue = ((QueueEvaluation) result).getQueue();
-		List<DummyObject> randomKeys = computeRandomKeys(queue);
-
-		Long elapsedNanoSec = computeElapsedNanoSec(queue, randomKeys);
-		result.addEvaluationResult(getEvaluationDescription(), elapsedNanoSec);
-		return result;
+	public QueueEvaluationStrategy(Queue<DummyObject> queue) {
+		this.queue = queue;
 	}
 
-	private final List<DummyObject> computeRandomKeys(Queue<DummyObject> queue) {
+	protected abstract Long computeElapsedNanoSec(List<DummyObject> randomKeys);
+
+	public final void evaluate(CollectionEvaluationResult evaluationResult) {
+		List<DummyObject> randomKeys = computeRandomKeys();
+
+		Long elapsedNanoSec = computeElapsedNanoSec(randomKeys);
+		evaluationResult.addEvaluationResult(getEvaluationDescription(), elapsedNanoSec);
+	}
+
+	private final List<DummyObject> computeRandomKeys() {
 		List<DummyObject> keys = new ArrayList<>(queue);
-		return getRandomKeys(keys);
+		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}
 }

@@ -1,35 +1,34 @@
-package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
+package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
+public class NewQueueElementAdditionEvaluator extends QueueEvaluationStrategy {
 
-	public NewMapElementAdditionEvaluator(Map<DummyObject, DummyObject> map) {
-		super(map);
+	public NewQueueElementAdditionEvaluator(Queue<DummyObject> queue) {
+		super(queue);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "New map element addition in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
+		return "New queue element addition in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
 	}
 
 	@Override
 	protected Long computeElapsedNanoSec(List<DummyObject> randomKeys) {
 		Long totalElapsedNanoSec = 0l;
 
-		Map<DummyObject, DummyObject> mapClone = new HashMap<>(map);
+		Queue<DummyObject> queueClone = new LinkedList<>();
 		int numOfIteration = randomKeys.size();
 
 		for (int i = 0; i < numOfIteration; ++i) {
-			DummyObject newKey = new DummyObject();
-			DummyObject newValue = new DummyObject();
+			DummyObject newElement = new DummyObject();
 
 			Long startTime = System.nanoTime();
-			mapClone.put(newKey, newValue);
+			queueClone.add(newElement);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			totalElapsedNanoSec += elapsedNanoSec;

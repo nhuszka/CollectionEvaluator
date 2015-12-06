@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
-import com.nhuszka.collection_evaluator.result.CollectionEvaluation;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 
 abstract class CollectionEvaluator {
 	protected final List<EvaluationStrategy> evaluationStrategies;
@@ -13,10 +13,9 @@ abstract class CollectionEvaluator {
 		evaluationStrategies = new ArrayList<>();
 	}
 
-	CollectionEvaluation evaluate(CollectionEvaluation evaluationResult) {
+	void evaluate(CollectionEvaluationResult evaluationResult) {
 		for (EvaluationStrategy evaluationStrategy : evaluationStrategies) {
 			evaluationStrategy.evaluate(evaluationResult);
 		}
-		return evaluationResult;
 	}
 }

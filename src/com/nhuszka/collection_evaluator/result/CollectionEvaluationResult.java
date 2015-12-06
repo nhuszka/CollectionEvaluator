@@ -3,11 +3,11 @@ package com.nhuszka.collection_evaluator.result;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class CollectionEvaluation {
+public class CollectionEvaluationResult {
 
 	public Map<String, Long> evaluationResults;
 
-	protected CollectionEvaluation() {
+	public CollectionEvaluationResult() {
 		evaluationResults = new HashMap<>();
 	}
 
