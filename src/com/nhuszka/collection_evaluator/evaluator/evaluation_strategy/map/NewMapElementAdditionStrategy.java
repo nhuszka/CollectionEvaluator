@@ -1,14 +1,13 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
+public class NewMapElementAdditionStrategy extends MapEvaluationStrategy {
 
-	public NewMapElementAdditionEvaluator(Map<DummyObject, DummyObject> map) {
+	public NewMapElementAdditionStrategy(Map<DummyObject, DummyObject> map) {
 		super(map);
 	}
 
@@ -18,15 +17,12 @@ public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec(List<DummyObject> randomKeys) {
+	protected Long computeElapsedNanoSec() {
 		Long totalElapsedNanoSec = 0l;
 
-		// TODO: do not depend on concrete implementation
-		// or use generics
+		// TODO: do not depend on concrete implementation or use generics
 		Map<DummyObject, DummyObject> mapClone = new HashMap<>(map);
-		int numOfIteration = randomKeys.size();
-
-		for (int i = 0; i < numOfIteration; ++i) {
+		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newKey = new DummyObject();
 			DummyObject newValue = new DummyObject();
 
@@ -37,6 +33,6 @@ public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
 			totalElapsedNanoSec += elapsedNanoSec;
 		}
 
-		return totalElapsedNanoSec / numOfIteration;
+		return totalElapsedNanoSec / NUM_OF_ITERATION;
 	}
 }

@@ -7,7 +7,6 @@ import java.util.Queue;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationUtil;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 
 public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 
@@ -17,16 +16,7 @@ public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 		this.queue = queue;
 	}
 
-	protected abstract Long computeElapsedNanoSec(List<DummyObject> randomKeys);
-
-	public final void evaluate(CollectionEvaluationResult evaluationResult) {
-		List<DummyObject> randomKeys = computeRandomKeys();
-
-		Long elapsedNanoSec = computeElapsedNanoSec(randomKeys);
-		evaluationResult.addEvaluationResult(getEvaluationDescription(), elapsedNanoSec);
-	}
-
-	private final List<DummyObject> computeRandomKeys() {
+	protected final List<DummyObject> computeRandomElements() {
 		List<DummyObject> keys = new ArrayList<>(queue);
 		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}

@@ -1,13 +1,12 @@
 package com.nhuszka.collection_evaluator.generator;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class QueueGenerator implements CollectionGenerator {
+public class QueueGenerator {
 
-	@Override
-	public Collection<DummyObject> generate(Integer numberOfElements) {
+	public Queue<DummyObject> generate(Integer numberOfElements) {
+		// TODO do not depend on concrete implementation, use generics
 		final Queue<DummyObject> queue = new LinkedList<DummyObject>();
 
 		for (int i = 0; i < numberOfElements; ++i) {

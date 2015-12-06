@@ -2,12 +2,12 @@ package com.nhuszka.collection_evaluator.generator;
 
 import java.util.Random;
 
-public class DummyStringGenerator {
+class DummyStringGenerator {
 
 	private static final Integer MAX_LENGTH = 10;
 	private static final char[] CHARACTERS = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-	public static String generateString() {
+	static String generateString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		final Random random = new Random();
 

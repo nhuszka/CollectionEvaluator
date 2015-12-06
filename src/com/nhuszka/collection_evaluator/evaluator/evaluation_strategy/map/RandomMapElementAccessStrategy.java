@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class RandomMapElementAccessEvaluator extends MapEvaluationStrategy {
+public class RandomMapElementAccessStrategy extends MapEvaluationStrategy {
 
-	public RandomMapElementAccessEvaluator(Map<DummyObject, DummyObject> map) {
+	public RandomMapElementAccessStrategy(Map<DummyObject, DummyObject> map) {
 		super(map);
 	}
 
@@ -17,9 +17,10 @@ public class RandomMapElementAccessEvaluator extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec(List<DummyObject> randomKeys) {
+	protected Long computeElapsedNanoSec() {
 		Long totalElapsedNanoSec = 0l;
 
+		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();
 			map.get(key);

@@ -7,6 +7,7 @@ import java.util.Map;
 public class MapGenerator {
 
 	public Map<DummyObject, DummyObject> generate(Integer numberOfElements) {
+		// TODO do not depend on concrete implementation, use generics
 		final Map<DummyObject, DummyObject> map = new HashMap<DummyObject, DummyObject>();
 
 		for (int i = 0; i < numberOfElements; ++i) {
