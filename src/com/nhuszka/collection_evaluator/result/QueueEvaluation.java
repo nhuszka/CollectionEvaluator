@@ -4,11 +4,11 @@ import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class QueueEvaluationResult extends CollectionEvaluationResult {
+public class QueueEvaluation extends CollectionEvaluation {
 	
 	public Queue<DummyObject> queue;
 	
-	public QueueEvaluationResult(Queue<DummyObject> queue) {
+	public QueueEvaluation(Queue<DummyObject> queue) {
 		this.queue = queue;
 	}
 	

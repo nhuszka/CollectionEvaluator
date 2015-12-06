@@ -5,11 +5,11 @@ import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class MapEvaluationResult extends CollectionEvaluationResult {
+public class MapEvaluation extends CollectionEvaluation {
 	
 	public Map<DummyObject, DummyObject> map;
 
-	public MapEvaluationResult(Map<DummyObject, DummyObject> map) {
+	public MapEvaluation(Map<DummyObject, DummyObject> map) {
 		this.map = Collections.unmodifiableMap(map);
 	}
 

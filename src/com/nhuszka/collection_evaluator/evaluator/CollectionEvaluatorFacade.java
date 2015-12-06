@@ -7,9 +7,9 @@ import com.nhuszka.collection_evaluator.generator.CollectionGenerator;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.generator.MapGenerator;
 import com.nhuszka.collection_evaluator.generator.QueueGenerator;
-import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
-import com.nhuszka.collection_evaluator.result.MapEvaluationResult;
-import com.nhuszka.collection_evaluator.result.QueueEvaluationResult;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluation;
+import com.nhuszka.collection_evaluator.result.MapEvaluation;
+import com.nhuszka.collection_evaluator.result.QueueEvaluation;
 import com.nhuszka.collection_evaluator.setting.EvaluatorSettings;
 
 public class CollectionEvaluatorFacade {
@@ -34,17 +34,19 @@ public class CollectionEvaluatorFacade {
 		MapGenerator mapGenerator = new MapGenerator();
 		Map<DummyObject, DummyObject> map = mapGenerator.generate(numberOfElements);
 
-		CollectionEvaluationResult evaluationResult = new MapEvaluationResult(map);
-		evaluationResult = new MapEvaluator().evaluate(evaluationResult);
-		evaluationResult.processResults();
+		runPerformanceEvaluation(new MapEvaluation(map), new MapEvaluator());
 	}
 
 	private void runPerformanceEvaluationOnQueue(Integer numberOfElements) {
 		CollectionGenerator queueGenerator = new QueueGenerator();
 		Queue<DummyObject> queue = (Queue<DummyObject>) queueGenerator.generate(numberOfElements);
 
-		CollectionEvaluationResult evaluationResult = new QueueEvaluationResult(queue);
-		evaluationResult = new QueueEvaluator().evaluate(evaluationResult);
-		evaluationResult.processResults();
+		runPerformanceEvaluation(new QueueEvaluation(queue), new QueueEvaluator());
+	}
+
+	private void runPerformanceEvaluation(CollectionEvaluation evaluation, CollectionEvaluator evaluator) {
+		// TODO eliminiate return value
+		evaluation = evaluator.evaluate(evaluation);
+		evaluation.processResults();
 	}
 }

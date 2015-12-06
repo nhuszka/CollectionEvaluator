@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Random;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
-import com.nhuszka.collection_evaluator.result.MapEvaluationResult;
+import com.nhuszka.collection_evaluator.result.CollectionEvaluation;
+import com.nhuszka.collection_evaluator.result.MapEvaluation;
 
 public abstract class MapEvaluationStrategy implements EvaluationStrategy {
 
@@ -15,8 +15,9 @@ public abstract class MapEvaluationStrategy implements EvaluationStrategy {
 
 	protected abstract Long computeElapsedNanoSec(Map<DummyObject, DummyObject> map, List<DummyObject> randomKeys);
 
-	public final CollectionEvaluationResult evaluate(CollectionEvaluationResult result) {
-		Map<DummyObject, DummyObject> map = ((MapEvaluationResult) result).getMap();
+	public final CollectionEvaluation evaluate(CollectionEvaluation result) {
+		// TODO avoid casting
+		Map<DummyObject, DummyObject> map = ((MapEvaluation) result).getMap();
 		List<DummyObject> randomKeys = computeRandomKeys(map);
 
 		Long elapsedNanoSec = computeElapsedNanoSec(map, randomKeys);

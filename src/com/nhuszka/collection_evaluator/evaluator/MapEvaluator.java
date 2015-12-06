@@ -5,7 +5,7 @@ import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.RandomMapE
 
 class MapEvaluator extends CollectionEvaluator {
 
-	public MapEvaluator() {
+	MapEvaluator() {
 		evaluationStrategies.add(new RandomMapElementAccessEvaluator());
 		evaluationStrategies.add(new NewMapElementAdditionEvaluator());
 	}
