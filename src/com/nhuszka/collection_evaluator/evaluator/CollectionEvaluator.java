@@ -1,46 +1,22 @@
 package com.nhuszka.collection_evaluator.evaluator;
 
-import java.util.Map;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.nhuszka.collection_evaluator.generator.CollectionGenerator;
-import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.generator.MapGenerator;
-import com.nhuszka.collection_evaluator.generator.QueueGenerator;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
 import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
-import com.nhuszka.collection_evaluator.setting.EvaluatorSettings;
 
-public class CollectionEvaluator {
+public abstract class CollectionEvaluator {
+	protected final List<EvaluationStrategy> evaluationStrategies;
 
-	public void start() {
-		EvaluatorSettings settings = EvaluatorSettings.getSettings();
-		Integer numberOfElements = settings.getNumberOfElementsPerInterface();
+	public CollectionEvaluator() {
+		evaluationStrategies = new ArrayList<>();
+	}
 
-		switch (settings.getEvaluatedInterface()) {
-			case MAP :
-				runPerformanceEvaluationOnMap(numberOfElements);
-				break;
-			case QUEUE :
-				runPerformanceEvaluationOnQueue(numberOfElements);
-				break;
-			default :
-				break;
+	public CollectionEvaluationResult evaluate(CollectionEvaluationResult evaluationResult) {
+		for (EvaluationStrategy evaluationStrategy : evaluationStrategies) {
+			evaluationStrategy.evaluate(evaluationResult);
 		}
-	}
-
-	private void runPerformanceEvaluationOnMap(Integer numberOfElements) {
-		MapGenerator mapGenerator = new MapGenerator();
-		Map<DummyObject, DummyObject> map = mapGenerator.generate(numberOfElements);
-
-		CollectionEvaluationResult evaluationResult = new MapEvaluator().evaluate(map); 
-		evaluationResult.processResults();
-	}
-
-	private void runPerformanceEvaluationOnQueue(Integer numberOfElements) {
-		CollectionGenerator queueGenerator = new QueueGenerator();
-		Queue<DummyObject> queue = (Queue<DummyObject>) queueGenerator.generate(numberOfElements);
-
-		CollectionEvaluationResult evaluationResult = new QueueEvaluator().evaluate(queue);
-		evaluationResult.processResults();
+		return evaluationResult;
 	}
 }
