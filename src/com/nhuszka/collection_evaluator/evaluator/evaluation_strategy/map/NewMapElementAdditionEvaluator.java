@@ -21,6 +21,8 @@ public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
 	protected Long computeElapsedNanoSec(List<DummyObject> randomKeys) {
 		Long totalElapsedNanoSec = 0l;
 
+		// TODO: do not depend on concrete implementation
+		// or use generics
 		Map<DummyObject, DummyObject> mapClone = new HashMap<>(map);
 		int numOfIteration = randomKeys.size();
 

@@ -22,11 +22,13 @@ public class RandomQueueElementAccessEvaluator extends QueueEvaluationStrategy {
 	protected Long computeElapsedNanoSec(List<DummyObject> randomElements) {
 		Long totalElapsedNanoSec = 0l;
 
+		// TODO: do not depend on concrete implementation
+		// or use generics
 		LinkedList<DummyObject> linkedList = ((LinkedList<DummyObject>) queue);
-		List<DummyObject> elements = new ArrayList<>(queue);
+		List<DummyObject> elementsInQueue = new ArrayList<>(queue);
 
 		for (DummyObject element : randomElements) {
-			Integer index = elements.indexOf(element);
+			Integer index = elementsInQueue.indexOf(element);
 
 			Long startTime = System.nanoTime();
 			linkedList.get(index);

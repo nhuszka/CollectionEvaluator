@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.generator;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,6 @@ public class MapGenerator {
 			map.put(new DummyObject(), new DummyObject());
 		}
 
-		return map;
+		return Collections.unmodifiableMap(map);
 	}
 }

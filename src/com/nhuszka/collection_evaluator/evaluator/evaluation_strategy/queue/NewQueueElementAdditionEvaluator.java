@@ -21,6 +21,8 @@ public class NewQueueElementAdditionEvaluator extends QueueEvaluationStrategy {
 	protected Long computeElapsedNanoSec(List<DummyObject> randomKeys) {
 		Long totalElapsedNanoSec = 0l;
 
+		// TODO: do not depend on concrete implementation
+		// or use generics
 		Queue<DummyObject> queueClone = new LinkedList<>();
 		int numOfIteration = randomKeys.size();
 
