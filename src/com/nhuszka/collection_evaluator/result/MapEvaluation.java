@@ -6,7 +6,7 @@ import java.util.Map;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
 public class MapEvaluation extends CollectionEvaluation {
-	
+
 	public Map<DummyObject, DummyObject> map;
 
 	public MapEvaluation(Map<DummyObject, DummyObject> map) {
@@ -15,12 +15,5 @@ public class MapEvaluation extends CollectionEvaluation {
 
 	public Map<DummyObject, DummyObject> getMap() {
 		return map;
-	}
-
-	@Override
-	public void processResults() {
-		for (String evaluation : evaluationResults.keySet()) {
-			System.out.println(evaluation + ": " + evaluationResults.get(evaluation));
-		}
 	}
 }

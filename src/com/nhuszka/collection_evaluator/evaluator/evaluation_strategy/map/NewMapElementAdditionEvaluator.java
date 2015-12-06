@@ -1,4 +1,4 @@
-package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy;
+package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ import com.nhuszka.collection_evaluator.generator.DummyObject;
 public class NewMapElementAdditionEvaluator extends MapEvaluationStrategy {
 
 	@Override
-	protected String getDescription() {
+	protected String getEvaluationDescription() {
 		return "New map element addition in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
 	}
 

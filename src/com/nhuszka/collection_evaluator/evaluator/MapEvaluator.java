@@ -1,7 +1,7 @@
 package com.nhuszka.collection_evaluator.evaluator;
 
-import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.NewMapElementAdditionEvaluator;
-import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.RandomMapElementAccessEvaluator;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map.NewMapElementAdditionEvaluator;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map.RandomMapElementAccessEvaluator;
 
 class MapEvaluator extends CollectionEvaluator {
 

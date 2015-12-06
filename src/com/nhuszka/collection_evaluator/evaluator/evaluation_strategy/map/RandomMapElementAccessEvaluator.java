@@ -1,4 +1,4 @@
-package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy;
+package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
 import java.util.List;
 import java.util.Map;
@@ -6,9 +6,9 @@ import java.util.Map;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
 public class RandomMapElementAccessEvaluator extends MapEvaluationStrategy {
-	
+
 	@Override
-	protected String getDescription() {
+	protected String getEvaluationDescription() {
 		return "Random map element access in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
 	}
 
