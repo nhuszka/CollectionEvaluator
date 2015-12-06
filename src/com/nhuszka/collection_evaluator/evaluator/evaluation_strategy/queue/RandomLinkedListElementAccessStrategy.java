@@ -20,11 +20,15 @@ public class RandomLinkedListElementAccessStrategy extends QueueEvaluationStrate
 
 	@Override
 	protected Long computeElapsedNanoSec() {
+		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
+
+		return computeElapsedNanoSecForRandomElementAccess(linkedList);
+	}
+
+	protected Long computeElapsedNanoSecForRandomElementAccess(LinkedList<DummyObject> linkedList) {
 		Long totalElapsedNanoSec = 0l;
 
-		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
-		List<DummyObject> elementsInQueue = new ArrayList<>(queue);
-
+		List<DummyObject> elementsInQueue = new ArrayList<>(linkedList);
 		List<DummyObject> randomElements = computeRandomElements();
 		for (DummyObject element : randomElements) {
 			Integer index = elementsInQueue.indexOf(element);

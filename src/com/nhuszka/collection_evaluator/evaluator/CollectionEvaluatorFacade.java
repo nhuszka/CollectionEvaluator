@@ -11,7 +11,7 @@ public class CollectionEvaluatorFacade {
 
 		switch (settings.getEvaluatedInterface()) {
 			case MAP :
-				runPerformanceEvaluationOnTreeMap(numberOfElements);
+				runPerformanceEvaluationOnMap(numberOfElements);
 				break;
 			case QUEUE :
 				runPerformanceEvaluationOnQueue(numberOfElements);
@@ -21,7 +21,7 @@ public class CollectionEvaluatorFacade {
 		}
 	}
 
-	private void runPerformanceEvaluationOnTreeMap(Integer numberOfElements) {
+	private void runPerformanceEvaluationOnMap(Integer numberOfElements) {
 		runPerformanceEvaluation(new CollectionEvaluationResult(), new MapEvaluator(numberOfElements));
 	}
 

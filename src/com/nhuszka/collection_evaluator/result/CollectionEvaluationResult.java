@@ -1,23 +1,23 @@
 package com.nhuszka.collection_evaluator.result;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CollectionEvaluationResult {
 
-	public Map<String, Long> evaluationResults;
+	public List<String> evaluationResults;
 
 	public CollectionEvaluationResult() {
-		evaluationResults = new HashMap<>();
+		evaluationResults = new ArrayList<String>();
 	}
 
 	public final void addEvaluationResult(String evaluationDescription, Long elapsedNanoSec) {
-		evaluationResults.put(evaluationDescription, elapsedNanoSec);
+		evaluationResults.add(evaluationDescription + ": " + elapsedNanoSec);
 	}
 
 	public void processResults() {
-		for (String evaluation : evaluationResults.keySet()) {
-			System.out.println(evaluation + ": " + evaluationResults.get(evaluation));
+		for (String evaluation : evaluationResults) {
+			System.out.println(evaluation);
 		}
 	}
 }
