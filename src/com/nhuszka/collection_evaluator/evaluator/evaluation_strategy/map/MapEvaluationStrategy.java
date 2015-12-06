@@ -20,4 +20,10 @@ public abstract class MapEvaluationStrategy extends EvaluationStrategy {
 		List<DummyObject> keys = new ArrayList<>(map.keySet());
 		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}
+
+	protected String getEvaluationInfo() {
+		return "(average on " + NUM_OF_ITERATION + " iteration, "
+				+ "collection: " + map.getClass() + ")";
+	}
+
 }

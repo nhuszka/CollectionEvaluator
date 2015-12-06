@@ -7,23 +7,22 @@ import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class RandomQueueElementAccessStrategy extends QueueEvaluationStrategy {
+public class RandomLinkedListElementAccessStrategy extends QueueEvaluationStrategy {
 
-	public RandomQueueElementAccessStrategy(Queue<DummyObject> queue) {
+	public RandomLinkedListElementAccessStrategy(Queue<DummyObject> queue) {
 		super(queue);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Random queue element access in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
+		return "Random queue element access in nanosec " + getEvaluationInfo();
 	}
 
 	@Override
 	protected Long computeElapsedNanoSec() {
 		Long totalElapsedNanoSec = 0l;
 
-		// TODO: do not depend on concrete implementation or use generics
-		LinkedList<DummyObject> linkedList = ((LinkedList<DummyObject>) queue);
+		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 		List<DummyObject> elementsInQueue = new ArrayList<>(queue);
 
 		List<DummyObject> randomElements = computeRandomElements();

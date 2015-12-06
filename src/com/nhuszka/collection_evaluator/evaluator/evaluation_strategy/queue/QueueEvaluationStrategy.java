@@ -20,4 +20,9 @@ public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 		List<DummyObject> keys = new ArrayList<>(queue);
 		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}
+
+	protected String getEvaluationInfo() {
+		return "(average on " + NUM_OF_ITERATION + " iteration), "
+				+ "collection: " + queue.getClass() + ")";
+	}
 }

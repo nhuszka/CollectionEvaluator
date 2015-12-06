@@ -13,7 +13,9 @@ public class RandomMapElementAccessStrategy extends MapEvaluationStrategy {
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Random map element access in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
+		return "Random map element access in nanosec (average on "
+				+ NUM_OF_ITERATION + " iteration, "
+				+ "collection: " + map.getClass() + ")";
 	}
 
 	@Override

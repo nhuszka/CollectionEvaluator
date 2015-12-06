@@ -13,17 +13,14 @@ public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "New queue element addition in nanosec (average on " + NUM_OF_ITERATION + " iteration)";
+		return "New queue element addition in nanosec " + getEvaluationInfo();
 	}
 
 	@Override
 	protected Long computeElapsedNanoSec() {
 		Long totalElapsedNanoSec = 0l;
 
-		// TODO: do not depend on concrete implementation
-		// or use generics
 		Queue<DummyObject> queueClone = new LinkedList<>();
-
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newElement = new DummyObject();
 
