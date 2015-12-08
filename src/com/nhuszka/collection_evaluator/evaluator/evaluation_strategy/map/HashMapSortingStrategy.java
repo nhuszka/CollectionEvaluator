@@ -19,8 +19,8 @@ public class HashMapSortingStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		Long startTime = System.nanoTime();
 		
@@ -29,7 +29,7 @@ public class HashMapSortingStrategy extends MapEvaluationStrategy {
 		
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 		
-		elapsedNanoSecundums.add(elapsedNanoSec);
-		return elapsedNanoSecundums;
+		elapsedNanoSeconds.add(elapsedNanoSec);
+		return elapsedNanoSeconds;
 	}
 }

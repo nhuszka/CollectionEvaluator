@@ -20,12 +20,12 @@ public class SearchMapElementStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
+	protected List<Long> computeElapsedNanoSeconds() {
 		return computeElapsedNanoSecToSearch(map);
 	}
 
 	protected List<Long> computeElapsedNanoSecToSearch(Map<DummyObject, DummyObject> mapToSearch) {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
@@ -33,10 +33,10 @@ public class SearchMapElementStrategy extends MapEvaluationStrategy {
 			mapToSearch.containsKey(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			elapsedNanoSecundums.add(elapsedNanoSec);
+			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 		
 		
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 }

@@ -20,8 +20,8 @@ public class RandomMapElementAccessStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
@@ -29,9 +29,9 @@ public class RandomMapElementAccessStrategy extends MapEvaluationStrategy {
 			map.get(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			elapsedNanoSecundums.add(elapsedNanoSec);
+			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 }

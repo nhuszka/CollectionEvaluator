@@ -20,8 +20,8 @@ public class LinkedListSortingStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
@@ -29,8 +29,8 @@ public class LinkedListSortingStrategy extends QueueEvaluationStrategy {
 		Collections.sort(linkedList);
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 
-		elapsedNanoSecundums.add(elapsedNanoSec);
+		elapsedNanoSeconds.add(elapsedNanoSec);
 		
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 }

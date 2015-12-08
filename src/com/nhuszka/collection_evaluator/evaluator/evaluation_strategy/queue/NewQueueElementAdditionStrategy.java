@@ -19,8 +19,8 @@ public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		Queue<DummyObject> queueClone = new LinkedList<>();
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
@@ -30,9 +30,9 @@ public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
 			queueClone.add(newElement);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			elapsedNanoSecundums.add(elapsedNanoSec);
+			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 }

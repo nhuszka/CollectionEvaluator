@@ -10,9 +10,9 @@ public abstract class EvaluationStrategy {
 
 	protected abstract String getEvaluationDescription();
 
-	protected abstract List<Long> computeElapsedNanoSecundums();
+	protected abstract List<Long> computeElapsedNanoSeconds();
 
 	public final void evaluate(CollectionEvaluationResult evaluationResult) {
-		evaluationResult.addEvaluationResults(getEvaluationDescription(), computeElapsedNanoSecundums());
+		evaluationResult.addEvaluationResults(getEvaluationDescription(), computeElapsedNanoSeconds());
 	}
 }

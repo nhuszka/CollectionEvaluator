@@ -19,7 +19,7 @@ public class RandomLinkedListElementAccessAfterSortStrategy extends RandomLinked
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
+	protected List<Long> computeElapsedNanoSeconds() {
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 		Collections.sort(linkedList);
 

@@ -19,14 +19,14 @@ public class RandomLinkedListElementAccessStrategy extends QueueEvaluationStrate
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
+	protected List<Long> computeElapsedNanoSeconds() {
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
 		return computeElapsedNanoSecForRandomElementAccess(linkedList);
 	}
 
 	protected List<Long> computeElapsedNanoSecForRandomElementAccess(LinkedList<DummyObject> linkedList) {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		List<DummyObject> elementsInQueue = new ArrayList<>(linkedList);
 		List<DummyObject> randomElements = computeRandomElements();
@@ -37,9 +37,9 @@ public class RandomLinkedListElementAccessStrategy extends QueueEvaluationStrate
 			linkedList.get(index);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 			
-			elapsedNanoSecundums.add(elapsedNanoSec);
+			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 }

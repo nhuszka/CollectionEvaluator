@@ -19,8 +19,8 @@ public class NewTreeMapElementAdditionStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
-		List<Long> elapsedNanoSecundums = new ArrayList<>();
+	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		Map<DummyObject, DummyObject> mapClone = cloneMap();
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
@@ -31,10 +31,10 @@ public class NewTreeMapElementAdditionStrategy extends MapEvaluationStrategy {
 			mapClone.put(newKey, newValue);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			elapsedNanoSecundums.add(elapsedNanoSec);
+			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 
-		return elapsedNanoSecundums;
+		return elapsedNanoSeconds;
 	}
 
 	protected Map<DummyObject, DummyObject> cloneMap() {

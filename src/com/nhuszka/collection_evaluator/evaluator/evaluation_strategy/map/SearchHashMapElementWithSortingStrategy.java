@@ -20,7 +20,7 @@ public class SearchHashMapElementWithSortingStrategy extends SearchMapElementStr
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSecundums() {
+	protected List<Long> computeElapsedNanoSeconds() {
 		Map<DummyObject, DummyObject> sortedMap = new TreeMap<DummyObject, DummyObject>();
 		sortedMap.putAll(map);
 		return super.computeElapsedNanoSecToSearch(sortedMap);
