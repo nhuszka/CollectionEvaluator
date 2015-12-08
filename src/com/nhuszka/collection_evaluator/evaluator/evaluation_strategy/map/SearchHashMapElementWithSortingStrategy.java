@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -19,7 +20,7 @@ public class SearchHashMapElementWithSortingStrategy extends SearchMapElementStr
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
+	protected List<Long> computeElapsedNanoSecundums() {
 		Map<DummyObject, DummyObject> sortedMap = new TreeMap<DummyObject, DummyObject>();
 		sortedMap.putAll(map);
 		return super.computeElapsedNanoSecToSearch(sortedMap);

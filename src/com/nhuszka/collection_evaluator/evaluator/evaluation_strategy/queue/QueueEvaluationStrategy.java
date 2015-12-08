@@ -22,7 +22,6 @@ public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 	}
 
 	protected String getEvaluationInfo() {
-		return "(average on " + NUM_OF_ITERATION + " iteration), "
-				+ "collection: " + queue.getClass() + ")";
+		return "(" + NUM_OF_ITERATION + " iteration, collection: " + queue.getClass() + ")";
 	}
 }

@@ -1,5 +1,7 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy;
 
+import java.util.List;
+
 import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 
 public abstract class EvaluationStrategy {
@@ -8,9 +10,9 @@ public abstract class EvaluationStrategy {
 
 	protected abstract String getEvaluationDescription();
 
-	protected abstract Long computeElapsedNanoSec();
+	protected abstract List<Long> computeElapsedNanoSecundums();
 
 	public final void evaluate(CollectionEvaluationResult evaluationResult) {
-		evaluationResult.addEvaluationResult(getEvaluationDescription(), computeElapsedNanoSec());
+		evaluationResult.addEvaluationResults(getEvaluationDescription(), computeElapsedNanoSecundums());
 	}
 }

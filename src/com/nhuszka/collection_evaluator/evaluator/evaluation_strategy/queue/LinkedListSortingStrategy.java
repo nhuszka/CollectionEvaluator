@@ -1,7 +1,9 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
@@ -18,13 +20,17 @@ public class LinkedListSortingStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
+	protected List<Long> computeElapsedNanoSecundums() {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
 		Long startTime = System.nanoTime();
 		Collections.sort(linkedList);
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 
-		return elapsedNanoSec;
+		elapsedNanoSecundums.add(elapsedNanoSec);
+		
+		return elapsedNanoSecundums;
 	}
 }

@@ -1,5 +1,7 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,9 +19,9 @@ public class NewTreeMapElementAdditionStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
-		Long totalElapsedNanoSec = 0l;
-
+	protected List<Long> computeElapsedNanoSecundums() {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		Map<DummyObject, DummyObject> mapClone = cloneMap();
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newKey = new DummyObject();
@@ -29,10 +31,10 @@ public class NewTreeMapElementAdditionStrategy extends MapEvaluationStrategy {
 			mapClone.put(newKey, newValue);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			totalElapsedNanoSec += elapsedNanoSec;
+			elapsedNanoSecundums.add(elapsedNanoSec);
 		}
 
-		return totalElapsedNanoSec / NUM_OF_ITERATION;
+		return elapsedNanoSecundums;
 	}
 
 	protected Map<DummyObject, DummyObject> cloneMap() {

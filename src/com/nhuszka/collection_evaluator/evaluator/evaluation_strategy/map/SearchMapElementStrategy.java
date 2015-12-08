@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,21 +20,23 @@ public class SearchMapElementStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
+	protected List<Long> computeElapsedNanoSecundums() {
 		return computeElapsedNanoSecToSearch(map);
 	}
 
-	protected Long computeElapsedNanoSecToSearch(Map<DummyObject, DummyObject> mapToSearch) {
-		Long totalElapsedNanoSec = 0l;
-
+	protected List<Long> computeElapsedNanoSecToSearch(Map<DummyObject, DummyObject> mapToSearch) {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();
 			mapToSearch.containsKey(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
-			totalElapsedNanoSec += elapsedNanoSec;
-		}
 
-		return totalElapsedNanoSec / randomKeys.size();
+			elapsedNanoSecundums.add(elapsedNanoSec);
+		}
+		
+		
+		return elapsedNanoSecundums;
 	}
 }

@@ -22,8 +22,7 @@ public abstract class MapEvaluationStrategy extends EvaluationStrategy {
 	}
 
 	protected String getEvaluationInfo() {
-		return "(average on " + NUM_OF_ITERATION + " iteration, "
-				+ "collection: " + map.getClass() + ")";
+		return "(" + NUM_OF_ITERATION + " iteration, collection: " + map.getClass() + ")";
 	}
 
 }

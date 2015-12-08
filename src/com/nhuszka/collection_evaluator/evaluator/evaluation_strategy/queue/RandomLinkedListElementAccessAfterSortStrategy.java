@@ -2,6 +2,7 @@ package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
@@ -18,7 +19,7 @@ public class RandomLinkedListElementAccessAfterSortStrategy extends RandomLinked
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
+	protected List<Long> computeElapsedNanoSecundums() {
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 		Collections.sort(linkedList);
 

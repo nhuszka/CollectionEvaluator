@@ -1,6 +1,8 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
@@ -17,9 +19,9 @@ public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
-		Long totalElapsedNanoSec = 0l;
-
+	protected List<Long> computeElapsedNanoSecundums() {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		Queue<DummyObject> queueClone = new LinkedList<>();
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newElement = new DummyObject();
@@ -28,9 +30,9 @@ public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
 			queueClone.add(newElement);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
-			totalElapsedNanoSec += elapsedNanoSec;
+			elapsedNanoSecundums.add(elapsedNanoSec);
 		}
 
-		return totalElapsedNanoSec / NUM_OF_ITERATION;
+		return elapsedNanoSecundums;
 	}
 }

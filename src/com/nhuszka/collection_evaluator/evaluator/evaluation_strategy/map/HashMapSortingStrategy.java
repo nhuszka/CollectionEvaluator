@@ -1,5 +1,7 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,13 +19,17 @@ public class HashMapSortingStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
+	protected List<Long> computeElapsedNanoSecundums() {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		Long startTime = System.nanoTime();
-
+		
 		Map<DummyObject, DummyObject> mapClone = new TreeMap<DummyObject, DummyObject>();
 		mapClone.putAll(map);
-
+		
 		Long elapsedNanoSec = System.nanoTime() - startTime;
-		return elapsedNanoSec;
+		
+		elapsedNanoSecundums.add(elapsedNanoSec);
+		return elapsedNanoSecundums;
 	}
 }

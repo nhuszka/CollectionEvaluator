@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,17 +20,18 @@ public class RandomMapElementAccessStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected Long computeElapsedNanoSec() {
-		Long totalElapsedNanoSec = 0l;
-
+	protected List<Long> computeElapsedNanoSecundums() {
+		List<Long> elapsedNanoSecundums = new ArrayList<>();
+		
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();
 			map.get(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
-			totalElapsedNanoSec += elapsedNanoSec;
+
+			elapsedNanoSecundums.add(elapsedNanoSec);
 		}
 
-		return totalElapsedNanoSec / randomKeys.size();
+		return elapsedNanoSecundums;
 	}
 }
