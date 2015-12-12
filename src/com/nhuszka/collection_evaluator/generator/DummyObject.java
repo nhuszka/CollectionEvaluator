@@ -1,6 +1,7 @@
 package com.nhuszka.collection_evaluator.generator;
 
 public class DummyObject implements Comparable<DummyObject> {
+
 	private final String content = DummyStringGenerator.generateString();
 
 	@Override

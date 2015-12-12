@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SearchMapStrategy extends MapEvaluationStrategy {
 
@@ -13,10 +14,8 @@ public class SearchMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Search map element in nanosec (average on "
-				+ NUM_OF_ITERATION + " iteration, "
-				+ "collection: " + map.getClass() + ")";
+	protected String getEvaluationTitle() {
+		return Texts.SEARCH_MAP_STRATEGY_TITLE;
 	}
 
 	@Override

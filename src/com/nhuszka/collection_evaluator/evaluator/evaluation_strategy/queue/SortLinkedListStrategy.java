@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 
@@ -15,14 +16,14 @@ public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Queue sorting in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.SORT_LINKED_LIST_STRATEGY_TITLE;
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-		
+
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
 		Long startTime = System.nanoTime();
@@ -30,7 +31,7 @@ public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 
 		elapsedNanoSeconds.add(elapsedNanoSec);
-		
+
 		return elapsedNanoSeconds;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class PutMapStrategy extends MapEvaluationStrategy {
 
@@ -17,8 +18,8 @@ public class PutMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "New map element addition in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.PUT_MAP_STRATEGY_TITLE;
 	}
 
 	@Override

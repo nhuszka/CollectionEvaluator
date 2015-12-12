@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class AddQueueStrategy extends QueueEvaluationStrategy {
 
@@ -14,14 +15,14 @@ public class AddQueueStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "New queue element addition in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.ADD_QUEUE_STRATEGY_TITLE;
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-		
+
 		Queue<DummyObject> queueClone = new LinkedList<>();
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newElement = new DummyObject();

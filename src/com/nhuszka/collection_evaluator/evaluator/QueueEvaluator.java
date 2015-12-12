@@ -12,6 +12,10 @@ import com.nhuszka.collection_evaluator.generator.queue.LinkedListGenerator;
 class QueueEvaluator extends CollectionEvaluator {
 
 	QueueEvaluator(Integer numberOfElements) {
+		evaluateLinkedList(numberOfElements);
+	}
+
+	private void evaluateLinkedList(Integer numberOfElements) {
 		Queue<DummyObject> queue = new LinkedListGenerator().generate(numberOfElements);
 
 		evaluationStrategies.add(new SortLinkedListStrategy(queue));

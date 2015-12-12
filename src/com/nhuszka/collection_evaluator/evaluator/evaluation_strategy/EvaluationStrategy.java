@@ -13,7 +13,8 @@ public abstract class EvaluationStrategy {
 
 	protected abstract List<Long> computeElapsedNanoSeconds();
 
-	public final void evaluate(CollectionEvaluationResult evaluationResult) throws IncorrectEvaluationResultException {
+	public final void evaluate(CollectionEvaluationResult evaluationResult)
+			throws IncorrectEvaluationResultException {
 		evaluationResult.addEvaluationResults(getEvaluationDescription(), computeElapsedNanoSeconds());
 	}
 }

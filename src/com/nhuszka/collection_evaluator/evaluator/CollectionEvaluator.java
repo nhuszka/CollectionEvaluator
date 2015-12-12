@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
+import com.nhuszka.collection_evaluator.message.Texts;
 import com.nhuszka.collection_evaluator.result.CollectionEvaluationResult;
 import com.nhuszka.collection_evaluator.result.exception.IncorrectEvaluationResultException;
 
 abstract class CollectionEvaluator {
-
-	private static final String SKIP_EVALUATION_ERROR = "Error! Skipping evaluation:";
-	private static final String NEW_LINE = "\n";
 
 	protected final List<EvaluationStrategy> evaluationStrategies;
 
@@ -34,12 +32,12 @@ abstract class CollectionEvaluator {
 
 	private String getEvaluationErrorMessage(IncorrectEvaluationResultException exception) {
 		return new StringBuilder()
-				.append(SKIP_EVALUATION_ERROR)
-				.append(NEW_LINE)
+				.append(Texts.SKIP_EVALUATION_ERROR)
+				.append(Texts.NEW_LINE)
 				.append(exception.getEvaluationDescription())
-				.append(NEW_LINE)
+				.append(Texts.NEW_LINE)
 				.append(exception.getErrorCause())
-				.append(NEW_LINE)
+				.append(Texts.NEW_LINE)
 				.toString();
 	}
 }

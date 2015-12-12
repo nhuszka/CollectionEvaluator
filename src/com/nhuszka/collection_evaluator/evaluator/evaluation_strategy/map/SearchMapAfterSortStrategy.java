@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SearchMapAfterSortStrategy extends SearchMapStrategy {
 
@@ -13,10 +14,8 @@ public class SearchMapAfterSortStrategy extends SearchMapStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Search map element with sorting (converting into TreeMap) in nanosec (average on "
-				+ NUM_OF_ITERATION + " iteration, "
-				+ "collection: " + map.getClass() + ")";
+	protected String getEvaluationTitle() {
+		return Texts.SEARCH_MAP_AFTER_SORT_STRATEGY_TITLE;
 	}
 
 	@Override

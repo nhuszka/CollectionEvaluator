@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 
@@ -14,8 +15,8 @@ public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Random queue element access in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.RANDOM_ACCESS_LINKED_LIST_STRATEGY_TITLE;
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 
 	protected List<Long> computeElapsedNanoSecForRandomElementAccess(LinkedList<DummyObject> linkedList) {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-		
+
 		List<DummyObject> elementsInQueue = new ArrayList<>(linkedList);
 		List<DummyObject> randomElements = computeRandomElements();
 		for (DummyObject element : randomElements) {
@@ -36,7 +37,7 @@ public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 			Long startTime = System.nanoTime();
 			linkedList.get(index);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
-			
+
 			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
 

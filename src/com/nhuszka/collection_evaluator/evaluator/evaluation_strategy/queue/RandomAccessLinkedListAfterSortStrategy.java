@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessLinkedListAfterSortStrategy extends RandomAccessLinkedListStrategy {
 
@@ -14,8 +15,8 @@ public class RandomAccessLinkedListAfterSortStrategy extends RandomAccessLinkedL
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Random queue element access after sort in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.RANDOM_ACCESS_LINKED_LIST_AFTER_SORT_STRATEGY_TITLE;
 	}
 
 	@Override

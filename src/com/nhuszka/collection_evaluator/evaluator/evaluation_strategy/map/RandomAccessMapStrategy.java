@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 
@@ -13,16 +14,14 @@ public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Random map element access in nanosec (average on "
-				+ NUM_OF_ITERATION + " iteration, "
-				+ "collection: " + map.getClass() + ")";
+	protected String getEvaluationTitle() {
+		return Texts.RANDOM_ACCESS_MAP_STRATEGY_TITLE;
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-		
+
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();

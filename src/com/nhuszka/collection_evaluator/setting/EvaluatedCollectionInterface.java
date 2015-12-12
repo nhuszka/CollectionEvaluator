@@ -1,7 +1,9 @@
 package com.nhuszka.collection_evaluator.setting;
 
+import com.nhuszka.collection_evaluator.message.Texts;
+
 public enum EvaluatedCollectionInterface {
-	MAP("Map"), QUEUE("Queue");
+	MAP(Texts.MAP), QUEUE(Texts.QUEUE);
 
 	private String description;
 

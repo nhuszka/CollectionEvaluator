@@ -7,6 +7,7 @@ import java.util.Map;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationUtil;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public abstract class MapEvaluationStrategy extends EvaluationStrategy {
 
@@ -21,8 +22,11 @@ public abstract class MapEvaluationStrategy extends EvaluationStrategy {
 		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}
 
-	protected String getEvaluationInfo() {
-		return "(" + NUM_OF_ITERATION + " iteration, collection: " + map.getClass() + ")";
+	@Override
+	protected String getEvaluationDescription() {
+		return getEvaluationTitle() + String.format(Texts.EVALUATION_DETAILS, NUM_OF_ITERATION, map.getClass());
 	}
+
+	protected abstract String getEvaluationTitle();
 
 }

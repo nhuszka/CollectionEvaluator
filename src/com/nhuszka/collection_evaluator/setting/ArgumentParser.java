@@ -1,5 +1,7 @@
 package com.nhuszka.collection_evaluator.setting;
 
+import com.nhuszka.collection_evaluator.message.Texts;
+
 public class ArgumentParser {
 
 	private StringBuilder errorMsg = new StringBuilder();
@@ -17,9 +19,9 @@ public class ArgumentParser {
 		if (arguments.length > 0) {
 			String argument1 = arguments[0];
 			switch (argument1.toLowerCase()) {
-				case "map" :
+				case Texts.MAP :
 					return EvaluatedCollectionInterface.MAP;
-				case "queue" :
+				case Texts.QUEUE :
 					return EvaluatedCollectionInterface.QUEUE;
 				default :
 					break;
@@ -30,21 +32,23 @@ public class ArgumentParser {
 
 	private EvaluatedCollectionInterface fallbackToDefaultInterfaceParam() {
 		addUsageMsg();
-		errorMsg.append("\n")
-				.append("Incorrect first parameter, 'collection interface to evaluate'. ")
-				.append("Fall back to default: ")
+		errorMsg.append(Texts.NEW_LINE)
+				.append(Texts.INCORRECT_FIRST_PARAMETER)
+				.append(Texts.NEW_LINE)
+				.append(Texts.FALL_BACK_TO_DEFAULT)
 				.append(EvaluatorSettings.DEFAULT_INTERFACE_SETTING)
-				.append("\n");
+				.append(Texts.NEW_LINE);
 		return EvaluatorSettings.DEFAULT_INTERFACE_SETTING;
 	}
 
 	private void addUsageMsg() {
-		errorMsg.append("Usage:")
-				.append("\n")
-				.append("\tfirst parameter (collection interface to evaluate): map/queue")
-				.append("\n")
-				.append("\tsecond parameter (number of elements per collection): an integer that is greater than 0")
-				.append("\n");
+		errorMsg.append(Texts.USAGE)
+				.append(Texts.NEW_LINE)
+				.append(Texts.USAGE_FIRST_PARAMETER)
+				.append(Texts.MAP).append("/").append(Texts.QUEUE)
+				.append(Texts.NEW_LINE)
+				.append(Texts.USAGE_SECOND_PARAMETER)
+				.append(Texts.NEW_LINE);
 	}
 
 	private Integer parseNumOfElementsPerCollectionArgument(String[] arguments) {
@@ -66,11 +70,12 @@ public class ArgumentParser {
 		if (errorMsg.toString().isEmpty()) {
 			addUsageMsg();
 		}
-		errorMsg.append("\n")
-				.append("Incorrect second parameter, 'number of elements per collection'. ")
-				.append("Fall back to default: ")
+		errorMsg.append(Texts.NEW_LINE)
+				.append(Texts.INCORRECT_SECOND_PARAMETER)
+				.append(Texts.NEW_LINE)
+				.append(Texts.FALL_BACK_TO_DEFAULT)
 				.append(EvaluatorSettings.DEFAULT_NUM_OF_ELEMENTS_SETTING)
-				.append("\n");
+				.append(Texts.NEW_LINE);
 		return EvaluatorSettings.DEFAULT_NUM_OF_ELEMENTS_SETTING;
 	}
 

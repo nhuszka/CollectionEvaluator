@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
+import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SortMapStrategy extends MapEvaluationStrategy {
 
@@ -14,8 +15,8 @@ public class SortMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
-	protected String getEvaluationDescription() {
-		return "Map sorting (converting into TreeMap) in nanosec " + getEvaluationInfo();
+	protected String getEvaluationTitle() {
+		return Texts.SORT_MAP_STRATEGY_TITLE;
 	}
 
 	@Override
