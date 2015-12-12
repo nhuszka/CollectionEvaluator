@@ -6,15 +6,15 @@ import java.util.TreeMap;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class SearchHashMapElementWithSortingStrategy extends SearchMapElementStrategy {
+public class SearchMapAfterSortStrategy extends SearchMapStrategy {
 
-	public SearchHashMapElementWithSortingStrategy(Map<DummyObject, DummyObject> map) {
+	public SearchMapAfterSortStrategy(Map<DummyObject, DummyObject> map) {
 		super(map);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Search map element with sorting in nanosec (average on "
+		return "Search map element with sorting (converting into TreeMap) in nanosec (average on "
 				+ NUM_OF_ITERATION + " iteration, "
 				+ "collection: " + map.getClass() + ")";
 	}

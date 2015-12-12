@@ -1,36 +1,35 @@
-package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
+package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class LinkedListSortingStrategy extends QueueEvaluationStrategy {
+public class SortMapStrategy extends MapEvaluationStrategy {
 
-	public LinkedListSortingStrategy(Queue<DummyObject> queue) {
-		super(queue);
+	public SortMapStrategy(Map<DummyObject, DummyObject> map) {
+		super(map);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Queue sorting in nanosec " + getEvaluationInfo();
+		return "Map sorting (converting into TreeMap) in nanosec " + getEvaluationInfo();
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-		
-		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
 		Long startTime = System.nanoTime();
-		Collections.sort(linkedList);
+
+		Map<DummyObject, DummyObject> mapClone = new TreeMap<DummyObject, DummyObject>();
+		mapClone.putAll(map);
+
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 
 		elapsedNanoSeconds.add(elapsedNanoSec);
-		
 		return elapsedNanoSeconds;
 	}
 }

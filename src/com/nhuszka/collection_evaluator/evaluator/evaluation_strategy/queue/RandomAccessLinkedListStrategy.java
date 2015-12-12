@@ -7,9 +7,9 @@ import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class RandomLinkedListElementAccessStrategy extends QueueEvaluationStrategy {
+public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 
-	public RandomLinkedListElementAccessStrategy(Queue<DummyObject> queue) {
+	public RandomAccessLinkedListStrategy(Queue<DummyObject> queue) {
 		super(queue);
 	}
 

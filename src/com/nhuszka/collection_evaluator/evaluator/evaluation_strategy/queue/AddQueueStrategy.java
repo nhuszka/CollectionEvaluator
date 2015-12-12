@@ -7,9 +7,9 @@ import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class NewQueueElementAdditionStrategy extends QueueEvaluationStrategy {
+public class AddQueueStrategy extends QueueEvaluationStrategy {
 
-	public NewQueueElementAdditionStrategy(Queue<DummyObject> queue) {
+	public AddQueueStrategy(Queue<DummyObject> queue) {
 		super(queue);
 	}
 

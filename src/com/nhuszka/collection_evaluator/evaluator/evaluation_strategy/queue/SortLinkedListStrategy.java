@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,22 +8,29 @@ import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class RandomLinkedListElementAccessAfterSortStrategy extends RandomLinkedListElementAccessStrategy {
+public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 
-	public RandomLinkedListElementAccessAfterSortStrategy(Queue<DummyObject> queue) {
+	public SortLinkedListStrategy(Queue<DummyObject> queue) {
 		super(queue);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Random queue element access after sort in nanosec " + getEvaluationInfo();
+		return "Queue sorting in nanosec " + getEvaluationInfo();
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
+		List<Long> elapsedNanoSeconds = new ArrayList<>();
+		
 		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
-		Collections.sort(linkedList);
 
-		return computeElapsedNanoSecForRandomElementAccess(linkedList);
+		Long startTime = System.nanoTime();
+		Collections.sort(linkedList);
+		Long elapsedNanoSec = System.nanoTime() - startTime;
+
+		elapsedNanoSeconds.add(elapsedNanoSec);
+		
+		return elapsedNanoSeconds;
 	}
 }

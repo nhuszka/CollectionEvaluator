@@ -6,37 +6,32 @@ import java.util.Map;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 
-public class SearchMapElementStrategy extends MapEvaluationStrategy {
+public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 
-	public SearchMapElementStrategy(Map<DummyObject, DummyObject> map) {
+	public RandomAccessMapStrategy(Map<DummyObject, DummyObject> map) {
 		super(map);
 	}
 
 	@Override
 	protected String getEvaluationDescription() {
-		return "Search map element in nanosec (average on "
+		return "Random map element access in nanosec (average on "
 				+ NUM_OF_ITERATION + " iteration, "
 				+ "collection: " + map.getClass() + ")";
 	}
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
-		return computeElapsedNanoSecToSearch(map);
-	}
-
-	protected List<Long> computeElapsedNanoSecToSearch(Map<DummyObject, DummyObject> mapToSearch) {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
 		
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();
-			mapToSearch.containsKey(key);
+			map.get(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			elapsedNanoSeconds.add(elapsedNanoSec);
 		}
-		
-		
+
 		return elapsedNanoSeconds;
 	}
 }
