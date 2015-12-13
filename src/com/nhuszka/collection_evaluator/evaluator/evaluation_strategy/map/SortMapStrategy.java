@@ -3,15 +3,19 @@ package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SortMapStrategy extends MapEvaluationStrategy {
 
-	public SortMapStrategy(Map<DummyObject, DummyObject> map) {
+	private final Map<DummyObject, DummyObject> mapToTest;
+
+	public SortMapStrategy(Map<DummyObject, DummyObject> map,
+			Map<DummyObject, DummyObject> mapToTest) {
 		super(map);
+		this.mapToTest = mapToTest;
+		mapToTest.putAll(map);
 	}
 
 	@Override
@@ -20,14 +24,16 @@ public class SortMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return mapToTest.getClass();
+	}
+
+	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
 
 		Long startTime = System.nanoTime();
-
-		Map<DummyObject, DummyObject> mapClone = new TreeMap<DummyObject, DummyObject>();
-		mapClone.putAll(map);
-
+		mapToTest.putAll(map);
 		Long elapsedNanoSec = System.nanoTime() - startTime;
 
 		elapsedNanoSeconds.add(elapsedNanoSec);

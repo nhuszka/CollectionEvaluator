@@ -11,10 +11,16 @@ public class PutMapStrategy extends MapEvaluationStrategy {
 
 	private final Map<DummyObject, DummyObject> mapToTest;
 
-	public PutMapStrategy(Map<DummyObject, DummyObject> originalMap,
+	public PutMapStrategy(Map<DummyObject, DummyObject> map,
 			Map<DummyObject, DummyObject> mapToTest) {
-		super(originalMap);
+		super(map);
 		this.mapToTest = mapToTest;
+		mapToTest.putAll(map);
+	}
+
+	@Override
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return mapToTest.getClass();
 	}
 
 	@Override
@@ -26,7 +32,6 @@ public class PutMapStrategy extends MapEvaluationStrategy {
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
 
-		mapToTest.putAll(map);
 		for (int i = 0; i < NUM_OF_ITERATION; ++i) {
 			DummyObject newKey = new DummyObject();
 			DummyObject newValue = new DummyObject();

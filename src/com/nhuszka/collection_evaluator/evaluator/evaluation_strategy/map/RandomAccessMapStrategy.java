@@ -9,13 +9,23 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 
-	public RandomAccessMapStrategy(Map<DummyObject, DummyObject> map) {
+	private final Map<DummyObject, DummyObject> mapToTest;
+
+	public RandomAccessMapStrategy(Map<DummyObject, DummyObject> map,
+			Map<DummyObject, DummyObject> mapToTest) {
 		super(map);
+		this.mapToTest = mapToTest;
+		mapToTest.putAll(map);
 	}
 
 	@Override
 	protected String getEvaluationTitle() {
 		return Texts.RANDOM_ACCESS_MAP_STRATEGY_TITLE;
+	}
+
+	@Override
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return mapToTest.getClass();
 	}
 
 	@Override
@@ -25,7 +35,7 @@ public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 		List<DummyObject> randomKeys = computeRandomKeys();
 		for (DummyObject key : randomKeys) {
 			Long startTime = System.nanoTime();
-			map.get(key);
+			mapToTest.get(key);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			elapsedNanoSeconds.add(elapsedNanoSec);

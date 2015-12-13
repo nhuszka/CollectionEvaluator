@@ -10,32 +10,32 @@ import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map.Search
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map.SearchMapStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.map.SortMapStrategy;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.generator.map.HashMapGenerator;
-import com.nhuszka.collection_evaluator.generator.map.TreeMapGenerator;
+import com.nhuszka.collection_evaluator.generator.MapGenerator;
 
 class MapEvaluator extends CollectionEvaluator {
 
+	private final Map<DummyObject, DummyObject> map;
+
 	MapEvaluator(Integer numberOfElements) {
+		this.map = new MapGenerator().generate(numberOfElements);
+
 		evaluateHashMap(numberOfElements);
 		evaluateTreeMap(numberOfElements);
 	}
 
 	private void evaluateHashMap(Integer numberOfElements) {
-		Map<DummyObject, DummyObject> hashMap = new HashMapGenerator().generate(numberOfElements);
 
-		evaluationStrategies.add(new SearchMapStrategy(hashMap));
-		evaluationStrategies.add(new SearchMapAfterSortStrategy(hashMap));
-		evaluationStrategies.add(new RandomAccessMapStrategy(hashMap));
-		evaluationStrategies.add(new PutMapStrategy(hashMap, createEmptyHashMap()));
-		evaluationStrategies.add(new SortMapStrategy(hashMap));
+		evaluationStrategies.add(new SearchMapStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new SearchMapAfterSortStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new PutMapStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new SortMapStrategy(map, createEmptyHashMap()));
 	}
 
 	private void evaluateTreeMap(Integer numberOfElements) {
-		Map<DummyObject, DummyObject> treeMap = new TreeMapGenerator().generate(numberOfElements);
-
-		evaluationStrategies.add(new SearchMapStrategy(treeMap));
-		evaluationStrategies.add(new RandomAccessMapStrategy(treeMap));
-		evaluationStrategies.add(new PutMapStrategy(treeMap, createEmptyTreeMap()));
+		evaluationStrategies.add(new SearchMapStrategy(map, createEmptyTreeMap()));
+		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyTreeMap()));
+		evaluationStrategies.add(new PutMapStrategy(map, createEmptyTreeMap()));
 	}
 
 	private static Map<DummyObject, DummyObject> createEmptyHashMap() {

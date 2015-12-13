@@ -7,7 +7,6 @@ import java.util.Queue;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.EvaluationUtil;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
-import com.nhuszka.collection_evaluator.message.Texts;
 
 public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 
@@ -21,14 +20,4 @@ public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 		List<DummyObject> keys = new ArrayList<>(queue);
 		return EvaluationUtil.getRandomKeys(keys, NUM_OF_ITERATION);
 	}
-
-	@Override
-	protected String getEvaluationDescription() {
-		return getEvaluationTitle()
-				+ String.format(Texts.EVALUATION_DETAILS, NUM_OF_ITERATION, getEvaluatedCollection().getClass());
-	}
-
-	protected abstract Queue<DummyObject> getEvaluatedCollection();
-
-	protected abstract String getEvaluationTitle();
 }

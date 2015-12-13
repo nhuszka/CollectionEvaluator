@@ -9,8 +9,9 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SearchMapAfterSortStrategy extends SearchMapStrategy {
 
-	public SearchMapAfterSortStrategy(Map<DummyObject, DummyObject> map) {
-		super(map);
+	public SearchMapAfterSortStrategy(Map<DummyObject, DummyObject> map,
+			Map<DummyObject, DummyObject> mapToTest) {
+		super(map, mapToTest);
 	}
 
 	@Override

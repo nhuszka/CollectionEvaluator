@@ -24,8 +24,8 @@ public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected Queue<DummyObject> getEvaluatedCollection() {
-		return linkedList;
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return linkedList.getClass();
 	}
 
 	@Override

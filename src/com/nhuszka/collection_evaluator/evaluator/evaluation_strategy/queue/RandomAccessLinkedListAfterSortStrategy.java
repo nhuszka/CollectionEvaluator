@@ -18,8 +18,8 @@ public class RandomAccessLinkedListAfterSortStrategy extends RandomAccessLinkedL
 	}
 
 	@Override
-	protected Queue<DummyObject> getEvaluatedCollection() {
-		return linkedList;
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return linkedList.getClass();
 	}
 
 	@Override

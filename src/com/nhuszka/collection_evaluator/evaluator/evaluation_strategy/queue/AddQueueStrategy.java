@@ -22,8 +22,8 @@ public class AddQueueStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected Queue<DummyObject> getEvaluatedCollection() {
-		return queueToEvaluate;
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return queueToEvaluate.getClass();
 	}
 
 	@Override

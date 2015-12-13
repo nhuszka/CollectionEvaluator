@@ -9,8 +9,13 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SearchMapStrategy extends MapEvaluationStrategy {
 
-	public SearchMapStrategy(Map<DummyObject, DummyObject> map) {
+	private final Map<DummyObject, DummyObject> mapToTest;
+
+	public SearchMapStrategy(Map<DummyObject, DummyObject> map,
+			Map<DummyObject, DummyObject> mapToTest) {
 		super(map);
+		this.mapToTest = mapToTest;
+		this.mapToTest.putAll(map);
 	}
 
 	@Override
@@ -19,8 +24,13 @@ public class SearchMapStrategy extends MapEvaluationStrategy {
 	}
 
 	@Override
+	protected Class<? extends Object> getEvaluatedCollectionClass() {
+		return mapToTest.getClass();
+	}
+
+	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
-		return computeElapsedNanoSecToSearch(map);
+		return computeElapsedNanoSecToSearch(mapToTest);
 	}
 
 	protected List<Long> computeElapsedNanoSecToSearch(Map<DummyObject, DummyObject> mapToSearch) {
