@@ -24,8 +24,11 @@ public abstract class QueueEvaluationStrategy extends EvaluationStrategy {
 
 	@Override
 	protected String getEvaluationDescription() {
-		return getEvaluationTitle() + String.format(Texts.EVALUATION_DETAILS, NUM_OF_ITERATION, queue.getClass());
+		return getEvaluationTitle()
+				+ String.format(Texts.EVALUATION_DETAILS, NUM_OF_ITERATION, getEvaluatedCollection().getClass());
 	}
+
+	protected abstract Queue<DummyObject> getEvaluatedCollection();
 
 	protected abstract String getEvaluationTitle();
 }

@@ -11,8 +11,11 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 
+	private final LinkedList<DummyObject> linkedList;
+
 	public SortLinkedListStrategy(Queue<DummyObject> queue) {
 		super(queue);
+		linkedList = new LinkedList<>(queue);
 	}
 
 	@Override
@@ -21,10 +24,13 @@ public class SortLinkedListStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
+	protected Queue<DummyObject> getEvaluatedCollection() {
+		return linkedList;
+	}
+
+	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
-
-		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 
 		Long startTime = System.nanoTime();
 		Collections.sort(linkedList);

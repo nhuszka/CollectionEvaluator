@@ -10,8 +10,16 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessLinkedListAfterSortStrategy extends RandomAccessLinkedListStrategy {
 
+	private final LinkedList<DummyObject> linkedList;
+
 	public RandomAccessLinkedListAfterSortStrategy(Queue<DummyObject> queue) {
 		super(queue);
+		linkedList = new LinkedList<>(queue);
+	}
+
+	@Override
+	protected Queue<DummyObject> getEvaluatedCollection() {
+		return linkedList;
 	}
 
 	@Override
@@ -21,9 +29,7 @@ public class RandomAccessLinkedListAfterSortStrategy extends RandomAccessLinkedL
 
 	@Override
 	protected List<Long> computeElapsedNanoSeconds() {
-		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
 		Collections.sort(linkedList);
-
-		return computeElapsedNanoSecForRandomElementAccess(linkedList);
+		return super.computeElapsedNanoSeconds(linkedList);
 	}
 }

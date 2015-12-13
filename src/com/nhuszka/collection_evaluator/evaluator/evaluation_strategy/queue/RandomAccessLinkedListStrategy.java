@@ -10,8 +10,11 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 
+	private final LinkedList<DummyObject> linkedList;
+
 	public RandomAccessLinkedListStrategy(Queue<DummyObject> queue) {
 		super(queue);
+		linkedList = new LinkedList<>(queue);
 	}
 
 	@Override
@@ -20,22 +23,25 @@ public class RandomAccessLinkedListStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected List<Long> computeElapsedNanoSeconds() {
-		LinkedList<DummyObject> linkedList = new LinkedList<>(queue);
-
-		return computeElapsedNanoSecForRandomElementAccess(linkedList);
+	protected Queue<DummyObject> getEvaluatedCollection() {
+		return linkedList;
 	}
 
-	protected List<Long> computeElapsedNanoSecForRandomElementAccess(LinkedList<DummyObject> linkedList) {
+	@Override
+	protected List<Long> computeElapsedNanoSeconds() {
+		return computeElapsedNanoSeconds(linkedList);
+	}
+
+	protected List<Long> computeElapsedNanoSeconds(LinkedList<DummyObject> list) {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
 
-		List<DummyObject> elementsInQueue = new ArrayList<>(linkedList);
+		List<DummyObject> elementsInQueue = new ArrayList<>(list);
 		List<DummyObject> randomElements = computeRandomElements();
 		for (DummyObject element : randomElements) {
 			Integer index = elementsInQueue.indexOf(element);
 
 			Long startTime = System.nanoTime();
-			linkedList.get(index);
+			list.get(index);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			elapsedNanoSeconds.add(elapsedNanoSec);
