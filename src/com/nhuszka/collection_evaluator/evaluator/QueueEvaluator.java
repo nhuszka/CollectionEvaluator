@@ -7,6 +7,7 @@ import java.util.Queue;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.AddQueueStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.RandomAccessLinkedListAfterSortStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.RandomAccessLinkedListStrategy;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.SearchQueueStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.SortLinkedListStrategy;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.generator.QueueGenerator;
@@ -18,19 +19,15 @@ class QueueEvaluator extends CollectionEvaluator {
 	QueueEvaluator(Integer numberOfElements) {
 		this.queue = new QueueGenerator().generate(numberOfElements);
 
-		evaluateLinkedList(numberOfElements);
-		evaluatePriorityQueue(numberOfElements);
-	}
+		evaluationStrategies.add(new AddQueueStrategy(queue, createEmptyLinkedList()));
+		evaluationStrategies.add(new AddQueueStrategy(queue, createEmptyPriorityQueue()));
 
-	private void evaluateLinkedList(Integer numberOfElements) {
-		evaluationStrategies.add(new SortLinkedListStrategy(queue));
+		evaluationStrategies.add(new SearchQueueStrategy(queue, createEmptyLinkedList()));
+		evaluationStrategies.add(new SearchQueueStrategy(queue, createEmptyPriorityQueue()));
+
 		evaluationStrategies.add(new RandomAccessLinkedListStrategy(queue));
 		evaluationStrategies.add(new RandomAccessLinkedListAfterSortStrategy(queue));
-		evaluationStrategies.add(new AddQueueStrategy(queue, createEmptyLinkedList()));
-	}
-
-	private void evaluatePriorityQueue(Integer numberOfElements) {
-		evaluationStrategies.add(new AddQueueStrategy(queue, createEmptyPriorityQueue()));
+		evaluationStrategies.add(new SortLinkedListStrategy(queue));
 	}
 
 	private static LinkedList<DummyObject> createEmptyLinkedList() {

@@ -27,6 +27,8 @@ public class Texts {
 	public static final String RANDOM_ACCESS_LINKED_LIST_AFTER_SORT_STRATEGY_TITLE = "Random queue element access after sort in nanosec";
 	public static final String SORT_LINKED_LIST_STRATEGY_TITLE = "Queue sorting in nanosec";
 
+	public static final String SEARCH_QUEUE_STRATEGY_TITLE = "Search queue element in nanosec";
+
 	public static final String SKIP_EVALUATION_ERROR = "Error! Skipping evaluation:";
 	public static final String MISSING_EVALUATION_DESCRIPTION = "Missing evaluation description";
 	public static final String MISSING_EVALUATION_MEASUREMENTS = "Missing evaluation measurements";
