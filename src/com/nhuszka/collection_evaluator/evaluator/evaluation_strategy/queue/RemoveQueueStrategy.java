@@ -7,11 +7,11 @@ import java.util.Queue;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.message.Texts;
 
-public class SearchQueueStrategy extends QueueEvaluationStrategy {
+public class RemoveQueueStrategy extends QueueEvaluationStrategy {
 
 	private final Queue<DummyObject> queueToTest;
 
-	public SearchQueueStrategy(Queue<DummyObject> queue, Queue<DummyObject> queueToTest) {
+	public RemoveQueueStrategy(Queue<DummyObject> queue, Queue<DummyObject> queueToTest) {
 		super(queue);
 		this.queueToTest = queueToTest;
 		this.queueToTest.addAll(queue);
@@ -19,7 +19,7 @@ public class SearchQueueStrategy extends QueueEvaluationStrategy {
 
 	@Override
 	protected String getEvaluationTitle() {
-		return Texts.SEARCH_QUEUE_STRATEGY_TITLE;
+		return Texts.REMOVE_QUEUE_STRATEGY_TITLE;
 	}
 
 	@Override
@@ -31,10 +31,9 @@ public class SearchQueueStrategy extends QueueEvaluationStrategy {
 	protected List<Long> computeElapsedNanoSeconds() {
 		List<Long> elapsedNanoSeconds = new ArrayList<>();
 
-		List<DummyObject> randomElements = computeRandomElements();
-		for (DummyObject key : randomElements) {
+		while (!queueToTest.isEmpty()) {
 			Long startTime = System.nanoTime();
-			queueToTest.contains(key);
+			queueToTest.remove();
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			elapsedNanoSeconds.add(elapsedNanoSec);

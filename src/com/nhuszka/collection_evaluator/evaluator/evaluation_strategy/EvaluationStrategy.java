@@ -19,7 +19,7 @@ public abstract class EvaluationStrategy {
 
 	protected String getEvaluationDescription() {
 		return getEvaluationTitle()
-				+ String.format(Texts.EVALUATION_DETAILS, NUM_OF_ITERATION, getEvaluatedCollectionClass());
+				+ String.format(Texts.EVALUATION_DETAILS, getEvaluatedCollectionClass());
 	}
 
 	protected abstract Class<? extends Object> getEvaluatedCollectionClass();

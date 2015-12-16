@@ -15,7 +15,7 @@ public class RandomAccessMapStrategy extends MapEvaluationStrategy {
 			Map<DummyObject, DummyObject> mapToTest) {
 		super(map);
 		this.mapToTest = mapToTest;
-		mapToTest.putAll(map);
+		this.mapToTest.putAll(map);
 	}
 
 	@Override

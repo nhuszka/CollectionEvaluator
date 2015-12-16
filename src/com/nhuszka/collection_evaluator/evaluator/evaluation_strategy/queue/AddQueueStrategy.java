@@ -9,11 +9,12 @@ import com.nhuszka.collection_evaluator.message.Texts;
 
 public class AddQueueStrategy extends QueueEvaluationStrategy {
 
-	private final Queue<DummyObject> queueToEvaluate;
+	private final Queue<DummyObject> queueToTest;
 
-	public AddQueueStrategy(Queue<DummyObject> queue, Queue<DummyObject> queueToEvaluate) {
+	public AddQueueStrategy(Queue<DummyObject> queue, Queue<DummyObject> queueToTest) {
 		super(queue);
-		this.queueToEvaluate = queueToEvaluate;
+		this.queueToTest = queueToTest;
+		this.queueToTest.addAll(queue);
 	}
 
 	@Override
@@ -23,7 +24,7 @@ public class AddQueueStrategy extends QueueEvaluationStrategy {
 
 	@Override
 	protected Class<? extends Object> getEvaluatedCollectionClass() {
-		return queueToEvaluate.getClass();
+		return queueToTest.getClass();
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class AddQueueStrategy extends QueueEvaluationStrategy {
 			DummyObject newElement = new DummyObject();
 
 			Long startTime = System.nanoTime();
-			queueToEvaluate.add(newElement);
+			queueToTest.add(newElement);
 			Long elapsedNanoSec = System.nanoTime() - startTime;
 
 			elapsedNanoSeconds.add(elapsedNanoSec);
