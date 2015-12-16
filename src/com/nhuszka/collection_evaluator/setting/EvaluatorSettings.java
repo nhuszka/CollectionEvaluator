@@ -1,5 +1,7 @@
 package com.nhuszka.collection_evaluator.setting;
 
+import java.util.Optional;
+
 public class EvaluatorSettings {
 	public static final EvaluatedCollectionInterface DEFAULT_INTERFACE_SETTING = EvaluatedCollectionInterface.MAP;
 	public static Integer DEFAULT_NUM_OF_ELEMENTS_SETTING = 100;
@@ -19,13 +21,13 @@ public class EvaluatorSettings {
 			Integer numberOfElementsPerInterface) {
 		settings = new EvaluatorSettings(evaluatedInterface, numberOfElementsPerInterface);
 	}
+	
+	private static EvaluatorSettings getNewlyCreatedDefaultSettings() {
+		return settings = new EvaluatorSettings(DEFAULT_INTERFACE_SETTING, DEFAULT_NUM_OF_ELEMENTS_SETTING);
+	}
 
-	// TODO Optional interface usage
 	public static EvaluatorSettings getSettings() {
-		if (settings == null) {
-			settings = new EvaluatorSettings(DEFAULT_INTERFACE_SETTING, DEFAULT_NUM_OF_ELEMENTS_SETTING);
-		}
-		return settings;
+		return Optional.ofNullable(settings).orElse(getNewlyCreatedDefaultSettings());
 	}
 
 	public EvaluatedCollectionInterface getEvaluatedInterface() {
