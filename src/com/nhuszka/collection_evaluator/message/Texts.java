@@ -40,5 +40,7 @@ public class Texts {
 
 	public static final String MINIMUM = "minimum: ";
 	public static final String MAXIMUM = "maximum: ";
+	public static final String RATE_OF_ZEROS = "rate of 0 values: ";
 	public static final String AVERAGE = "average: ";
+	public static final String AVERAGE_WITHOUT_ZEROS = "average without zeros: ";
 }

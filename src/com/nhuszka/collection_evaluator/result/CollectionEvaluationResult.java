@@ -40,7 +40,9 @@ public class CollectionEvaluationResult {
 		private final List<Long> measurements;
 		private Long minimum;
 		private Long maximum;
-		private Long average;
+		private Double average;
+		private Double averageWithoutZeros;
+		private Double rateOfZeros;
 
 		public EvaluationDetails(String evaluationDescription, List<Long> measurements) {
 			this.evaluationDescription = evaluationDescription;
@@ -49,13 +51,30 @@ public class CollectionEvaluationResult {
 		}
 
 		private void calculateMetrics() {
-			Long sum = 0L;
+			Long sum = 0l;
+			Integer numOfNonZeroMeasurements = 0;
 			for (Long measurement : measurements) {
 				sum += measurement;
+				if (measurement > 0) {
+					numOfNonZeroMeasurements++;
+				}
 				minimum = reCalculateMinimum(measurement);
 				maximum = reCalculateMaximum(measurement);
 			}
-			average = sum / measurements.size();
+
+			average = new Double(sum / measurements.size());
+			calculateAdditionalMetrics(sum, numOfNonZeroMeasurements);
+		}
+
+		private void calculateAdditionalMetrics(Long sum, Integer numOfNonZeroMeasurements) {
+			Double numOfMeasurements = new Double(measurements.size());
+			if (numOfMeasurements > 1) {
+				Double numOfZeroMeasurements = numOfMeasurements - numOfNonZeroMeasurements;
+				rateOfZeros = (numOfZeroMeasurements / numOfMeasurements) * 100;
+				averageWithoutZeros = numOfNonZeroMeasurements == 0
+						? average
+						: sum / numOfNonZeroMeasurements;
+			}
 		}
 
 		private Long reCalculateMinimum(Long measurement) {
@@ -78,16 +97,26 @@ public class CollectionEvaluationResult {
 
 		@Override
 		public String toString() {
-			StringBuilder evaluation = new StringBuilder();
-			evaluation.append(evaluationDescription)
+			StringBuilder evaluation = new StringBuilder()
+					.append(evaluationDescription)
 					.append(":")
 					.append(Texts.NEW_LINE)
-					.append(Texts.MINIMUM + minimum)
-					.append(Texts.NEW_LINE)
-					.append(Texts.MAXIMUM + maximum)
-					.append(Texts.NEW_LINE)
-					.append(Texts.AVERAGE + average)
+					.append(Texts.AVERAGE)
+					.append(average.intValue())
 					.append(Texts.NEW_LINE);
+
+			if (rateOfZeros != null) {
+				evaluation.append(Texts.AVERAGE_WITHOUT_ZEROS)
+						.append(averageWithoutZeros.intValue())
+						.append(Texts.NEW_LINE)
+						.append(Texts.RATE_OF_ZEROS)
+						.append(rateOfZeros.intValue()).append("%")
+						// .append(Texts.NEW_LINE)
+						// .append(Texts.MINIMUM + minimum)
+						.append(Texts.NEW_LINE)
+						.append(Texts.MAXIMUM + maximum)
+						.append(Texts.NEW_LINE);
+			}
 
 			return evaluation.toString();
 		}
