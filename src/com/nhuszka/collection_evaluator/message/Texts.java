@@ -33,10 +33,13 @@ public class Texts {
 	public static final String SIZE_QUEUE_STRATEGY_TITLE = "Size query in nanosec";
 	public static final String SIZE_STREAM_QUEUE_STRATEGY_TITLE = "Size (count) query (stream) in nanosec";
 	public static final String SIZE_PARALLEL_STREAM_QUEUE_STRATEGY_TITLE = "Size (count) query (parallel stream) in nanosec";
-
 	public static final String SEARCH_QUEUE_STRATEGY_TITLE = "Search queue element in nanosec";
-	public static final String FILTER_QUEUE_STREAM_STRATEGY_TITLE = "Filter queue elements (stream) in nanosec";
-	public static final String FILTER_QUEUE_STREAM_PARALLEL_STRATEGY_TITLE = "Filter queue elements (stream - parallel) in nanosec";
+	public static final String FILTER_QUEUE_STRATEGY_TITLE = "Filter queue elements in nanosec (toString contains)";
+	public static final String FILTER_QUEUE_STREAM_STRATEGY_TITLE = "Filter queue (stream) elements in nanosec (toString contains)";
+	public static final String FILTER_QUEUE_STREAM_PARALLEL_STRATEGY_TITLE = "Filter queue (parallel stream) elements in nanosec (toString contains)";
+	public static final String USE_QUEUE_ELEMENT_STRATEGY_TITLE = "Use queue element strategy (compute hashCode sum) in nanosec";
+	public static final String USE_QUEUE_ELEMENT_STREAM_STRATEGY_TITLE = "Use queue (stream) element strategy in nanosec (compute hashCode sum)";
+	public static final String USE_QUEUE_ELEMENT_PARALLEL_STREAM_STRATEGY_TITLE = "Use queue (parallel stream) element strategy in nanosec (compute hashCode sum)";
 
 	public static final String SKIP_EVALUATION_ERROR = "Error! Skipping evaluation:";
 	public static final String MISSING_EVALUATION_DESCRIPTION = "Missing evaluation description";

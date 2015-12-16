@@ -75,7 +75,7 @@ class EvaluationDetails {
 				.append(average.intValue())
 				.append(Texts.NEW_LINE);
 
-		if (rateOfZeros != null) {
+		if (rateOfZeros != null && rateOfZeros.compareTo(new Double(0)) != 0) {
 			evaluation.append(Texts.AVERAGE_WITHOUT_ZEROS)
 					.append(averageWithoutZeros.intValue())
 					.append(Texts.NEW_LINE)

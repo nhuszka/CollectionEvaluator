@@ -1,5 +1,6 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
+import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
@@ -18,10 +19,10 @@ public class FilterQueueParallelStreamStrategy extends FilterQueueStreamStrategy
 	}
 
 	@Override
-	protected void filterStream() {
-		queueToTest
+	protected List<DummyObject> filterQueue() {
+		return queueToTest
 				.parallelStream()
-				.filter(item -> item.toString().contains("a"))
+				.filter(item -> isFiltered(item))
 				.collect(Collectors.toList());
 	}
 }

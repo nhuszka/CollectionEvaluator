@@ -1,6 +1,5 @@
 package com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
@@ -8,19 +7,10 @@ import java.util.stream.Collectors;
 import com.nhuszka.collection_evaluator.generator.DummyObject;
 import com.nhuszka.collection_evaluator.message.Texts;
 
-public class FilterQueueStreamStrategy extends QueueEvaluationStrategy {
-
-	protected final Queue<DummyObject> queueToTest;
+public class FilterQueueStreamStrategy extends FilterQueueStrategy {
 
 	public FilterQueueStreamStrategy(Queue<DummyObject> queue, Queue<DummyObject> queueToTest) {
-		super(queue);
-		this.queueToTest = queueToTest;
-		this.queueToTest.addAll(queue);
-	}
-
-	@Override
-	protected Class<? extends Object> getEvaluatedCollectionClass() {
-		return queueToTest.getClass();
+		super(queue, queueToTest);
 	}
 
 	@Override
@@ -29,23 +19,10 @@ public class FilterQueueStreamStrategy extends QueueEvaluationStrategy {
 	}
 
 	@Override
-	protected final List<Long> computeElapsedNanoSeconds() {
-		List<Long> elapsedNanoSeconds = new ArrayList<>();
-
-		Long startTime = System.nanoTime();
-
-		filterStream();
-
-		Long elapsedNanoSec = System.nanoTime() - startTime;
-		elapsedNanoSeconds.add(elapsedNanoSec);
-
-		return elapsedNanoSeconds;
-	}
-
-	protected void filterStream() {
-		queueToTest
+	protected List<DummyObject> filterQueue() {
+		return queueToTest
 				.stream()
-				.filter(item -> item.toString().contains("a"))
+				.filter(item -> isFiltered(item))
 				.collect(Collectors.toList());
 	}
 }
