@@ -7,11 +7,14 @@ public class Texts {
 
 	public static final String NEW_LINE = "\n";
 
+	public static final String START_PROGRAM = "----  Start CollectionEvaluator  ----\n";
+	public static final String END_PROGRAM = "----  End CollectionEvaluator  ----";
+
 	public static final String FALL_BACK_TO_DEFAULT = "Fall back to default: ";
 	public static final String INCORRECT_FIRST_PARAMETER = "Incorrect first parameter, 'collection interface to evaluate'.";
 	public static final String INCORRECT_SECOND_PARAMETER = "Incorrect second parameter, 'number of elements per collection'.";
 	public static final String USAGE = "Usage:";
-	public static final String USAGE_FIRST_PARAMETER = "first parameter (collection interface to evaluate):";
+	public static final String USAGE_FIRST_PARAMETER = "first parameter (collection interface to evaluate): ";
 	public static final String USAGE_SECOND_PARAMETER = "second parameter (number of elements per collection): an integer that is greater than 0";
 
 	public static final String EVALUATION_DETAILS = " (%s)";
