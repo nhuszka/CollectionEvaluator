@@ -14,7 +14,7 @@ public class Texts {
 	public static final String USAGE_FIRST_PARAMETER = "first parameter (collection interface to evaluate):";
 	public static final String USAGE_SECOND_PARAMETER = "second parameter (number of elements per collection): an integer that is greater than 0";
 
-	public static final String EVALUATION_DETAILS = " (%d iteration, collection %s)";
+	public static final String EVALUATION_DETAILS = " (%d iteration, %s)";
 
 	public static final String PUT_MAP_STRATEGY_TITLE = "New map element addition in nanosec";
 	public static final String RANDOM_ACCESS_MAP_STRATEGY_TITLE = "Random map element access in nanosec";

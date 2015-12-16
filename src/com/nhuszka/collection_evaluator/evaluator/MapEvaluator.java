@@ -20,35 +20,26 @@ class MapEvaluator extends CollectionEvaluator {
 	MapEvaluator(Integer numberOfElements) {
 		this.map = new MapGenerator().generate(numberOfElements);
 
-		evaluateHashMap();
-		evaluateLinkedHashMap();
-		evaluateTreeMap();
-	}
-
-	private void evaluateHashMap() {
 		evaluationStrategies.add(new SearchMapStrategy(map, createEmptyHashMap()));
-		evaluationStrategies.add(new SearchMapAfterSortStrategy(map, createEmptyHashMap()));
-		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyHashMap()));
-		evaluationStrategies.add(new PutMapStrategy(map, createEmptyHashMap()));
-		evaluationStrategies.add(new SortMapStrategy(map, createEmptyHashMap()));
-	}
-	
-	private void evaluateLinkedHashMap() {
 		evaluationStrategies.add(new SearchMapStrategy(map, createEmptyLinkedHashMap()));
-		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyLinkedHashMap()));
-		evaluationStrategies.add(new PutMapStrategy(map, createEmptyLinkedHashMap()));
-	}
-
-	private void evaluateTreeMap() {
 		evaluationStrategies.add(new SearchMapStrategy(map, createEmptyTreeMap()));
+
+		evaluationStrategies.add(new SearchMapAfterSortStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new SortMapStrategy(map, createEmptyHashMap()));
+
+		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyLinkedHashMap()));
 		evaluationStrategies.add(new RandomAccessMapStrategy(map, createEmptyTreeMap()));
+
+		evaluationStrategies.add(new PutMapStrategy(map, createEmptyHashMap()));
+		evaluationStrategies.add(new PutMapStrategy(map, createEmptyLinkedHashMap()));
 		evaluationStrategies.add(new PutMapStrategy(map, createEmptyTreeMap()));
 	}
 
 	private static Map<DummyObject, DummyObject> createEmptyHashMap() {
 		return new HashMap<>();
 	}
-	
+
 	private static Map<DummyObject, DummyObject> createEmptyLinkedHashMap() {
 		return new LinkedHashMap<>();
 	}
