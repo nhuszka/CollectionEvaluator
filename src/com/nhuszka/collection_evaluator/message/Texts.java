@@ -28,6 +28,8 @@ public class Texts {
 	public static final String SORT_LINKED_LIST_STRATEGY_TITLE = "Queue sorting in nanosec";
 
 	public static final String SEARCH_QUEUE_STRATEGY_TITLE = "Search queue element in nanosec";
+	public static final String FILTER_QUEUE_STREAM_STRATEGY_TITLE = "Filter queue elements (stream) in nanosec";
+	public static final String FILTER_QUEUE_STREAM_PARALLEL_STRATEGY_TITLE = "Filter queue elements (stream - parallel) in nanosec";
 
 	public static final String SKIP_EVALUATION_ERROR = "Error! Skipping evaluation:";
 	public static final String MISSING_EVALUATION_DESCRIPTION = "Missing evaluation description";

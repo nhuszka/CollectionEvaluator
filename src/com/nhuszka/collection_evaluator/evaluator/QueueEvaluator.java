@@ -5,6 +5,8 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.AddQueueStrategy;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.FilterQueueParallelStreamStrategy;
+import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.FilterQueueStreamStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.RandomAccessLinkedListAfterSortStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.RandomAccessLinkedListStrategy;
 import com.nhuszka.collection_evaluator.evaluator.evaluation_strategy.queue.SearchQueueStrategy;
@@ -24,6 +26,12 @@ class QueueEvaluator extends CollectionEvaluator {
 
 		evaluationStrategies.add(new SearchQueueStrategy(queue, createEmptyLinkedList()));
 		evaluationStrategies.add(new SearchQueueStrategy(queue, createEmptyPriorityQueue()));
+
+		evaluationStrategies.add(new FilterQueueStreamStrategy(queue, createEmptyLinkedList()));
+		evaluationStrategies.add(new FilterQueueStreamStrategy(queue, createEmptyPriorityQueue()));
+
+		evaluationStrategies.add(new FilterQueueParallelStreamStrategy(queue, createEmptyLinkedList()));
+		evaluationStrategies.add(new FilterQueueParallelStreamStrategy(queue, createEmptyPriorityQueue()));
 
 		evaluationStrategies.add(new RandomAccessLinkedListStrategy(queue));
 		evaluationStrategies.add(new RandomAccessLinkedListAfterSortStrategy(queue));
