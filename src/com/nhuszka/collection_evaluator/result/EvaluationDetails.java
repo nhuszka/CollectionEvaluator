@@ -21,7 +21,7 @@ class EvaluationDetails {
 	}
 
 	private void calculateMetrics() {
-		Long sum = 0l;
+		Long sum = 0L;
 		Integer numOfNonZeroMeasurements = 0;
 		for (Long measurement : measurements) {
 			sum += measurement;
@@ -32,12 +32,12 @@ class EvaluationDetails {
 			maximum = reCalculateMaximum(measurement);
 		}
 
-		average = new Double(sum / measurements.size());
+		average = (double) (sum / measurements.size());
 		calculateAdditionalMetrics(sum, numOfNonZeroMeasurements);
 	}
 
 	private void calculateAdditionalMetrics(Long sum, Integer numOfNonZeroMeasurements) {
-		Double numOfMeasurements = new Double(measurements.size());
+		Double numOfMeasurements = (double) measurements.size();
 		if (numOfMeasurements > 1) {
 			Double numOfZeroMeasurements = numOfMeasurements - numOfNonZeroMeasurements;
 			rateOfZeros = (numOfZeroMeasurements / numOfMeasurements) * 100;
@@ -75,7 +75,7 @@ class EvaluationDetails {
 				.append(average.intValue())
 				.append(Texts.NEW_LINE);
 
-		if (rateOfZeros != null && rateOfZeros.compareTo(new Double(0)) != 0) {
+		if (rateOfZeros != null && rateOfZeros.compareTo((double) 0) != 0) {
 			evaluation.append(Texts.AVERAGE_WITHOUT_ZEROS)
 					.append(averageWithoutZeros.intValue())
 					.append(Texts.NEW_LINE)
@@ -84,7 +84,8 @@ class EvaluationDetails {
 					// .append(Texts.NEW_LINE)
 					// .append(Texts.MINIMUM + minimum)
 					.append(Texts.NEW_LINE)
-					.append(Texts.MAXIMUM + maximum)
+					.append(Texts.MAXIMUM)
+					.append(maximum)
 					.append(Texts.NEW_LINE);
 		}
 
