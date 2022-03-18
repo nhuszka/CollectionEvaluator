@@ -22,4 +22,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>oncompass-snapshots</id>
+            <url>http://192.168.251.113:8081/repository/oncompass-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>oncompass-releases</id>
+            <url>http://192.168.251.113:8081/repository/oncompass-releases</url>
+        </repository>
+    </distributionManagement>
 </project>
