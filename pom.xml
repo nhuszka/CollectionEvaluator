@@ -9,7 +9,7 @@
         <url>https://github.com/nhuszka/CollectionEvaluator</url>
         <connection>scm:git:git://github.com/nhuszka/CollectionEvaluator.git</connection>
         <developerConnection>scm:git:git@github.com:nhuszka/CollectionEvaluator.git</developerConnection>
-    </scm>
+  </scm>
     <build>
         <plugins>
             <plugin>
