@@ -26,10 +26,12 @@
     <distributionManagement>
         <snapshotRepository>
             <id>oncompass-snapshots</id>
+            <name>OC snapshots</name>
             <url>http://192.168.251.113:8081/repository/oncompass-snapshots</url>
         </snapshotRepository>
         <repository>
             <id>oncompass-releases</id>
+            <name>OC releases</name>
             <url>http://192.168.251.113:8081/repository/oncompass-releases</url>
         </repository>
     </distributionManagement>
