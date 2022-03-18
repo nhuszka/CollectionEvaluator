@@ -6,10 +6,9 @@
 
     <scm>
         <url>https://github.com/nhuszka/CollectionEvaluator</url>
-        <connection>scm:git:git://github.com/nhuszka/CollectionEvaluator.git</connection>
-        <developerConnection>scm:git:git@github.com/nhuszka/CollectionEvaluator.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
+        <connection>scm:git:https://github.com/nhuszka/CollectionEvaluator</connection>
+        <developerConnection>scm:git:https://github.com/nhuszka/CollectionEvaluator</developerConnection>
+    </scm>
     <build>
         <plugins>
             <plugin>
