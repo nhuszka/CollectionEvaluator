@@ -9,8 +9,7 @@
         <url>https://github.com/nhuszka/CollectionEvaluator</url>
         <connection>scm:git:git://github.com/nhuszka/CollectionEvaluator.git</connection>
         <developerConnection>scm:git:git@github.com:nhuszka/CollectionEvaluator.git</developerConnection>
-      <tag>CollectionEvaluator/0.0.1-SNAPSHOT</tag>
-  </scm>
+    </scm>
     <build>
         <plugins>
             <plugin>
