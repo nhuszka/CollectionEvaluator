@@ -17,4 +17,10 @@
       </plugin>
     </plugins>
   </build>
+
+  <scm>
+    <url>https://github.com/nhuszka/CollectionEvaluator</url>
+    <connection>scm:git:git://github.com/nhuszka/CollectionEvaluator.git</connection>
+    <developerConnection>scm:git:git@github.com:nhuszka/CollectionEvaluator.git</developerConnection>
+  </scm>
 </project>
