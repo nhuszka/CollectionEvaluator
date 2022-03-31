@@ -10,6 +10,7 @@
         <developerConnection>scm:git:https://github.com/nhuszka/CollectionEvaluator.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
     <build>
         <plugins>
             <plugin>
