@@ -14,6 +14,9 @@ public class CollectionEvaluatorStarter {
 
 		CollectionEvaluatorFacade evaluatorApp = new CollectionEvaluatorFacade();
 		evaluatorApp.start();
+		System.out.println("Szia Poky");
+
+		
 
 		System.out.println(Texts.END_PROGRAM);
 	}
