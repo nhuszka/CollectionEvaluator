@@ -19,6 +19,6 @@ public class CollectionEvaluatorStarter {
 		
 		System.out.println(Texts.END_PROGRAM);
 		
-		System.out.println("SziaNándor");
+		System.out.println("SziaNandor");
 	}
 }
