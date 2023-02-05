@@ -18,5 +18,7 @@ public class CollectionEvaluatorStarter {
 		System.out.println("Szia Pokyka");
 		
 		System.out.println(Texts.END_PROGRAM);
+		
+		System.out.println("SziaNándor");
 	}
 }
